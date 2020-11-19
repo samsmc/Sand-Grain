@@ -9,8 +9,9 @@ import Login from "./pages/Login";
 import Private from "./pages/Private";
 import AnonRoute from "./components/AnonRoute";
 import PrivateRoute from "./components/PrivateRoute";
-import NewEvent from "./components/NewEvent";
+import NewEventForm from "./components/NewEventForm";
 import NewEventPage from "./pages/NewEventPage";
+import Home from "./pages/Home";
 
 class App extends Component {
   render() {
@@ -20,10 +21,11 @@ class App extends Component {
           <Navbar />
 
           <Switch>
+          <Home exact path='/' component={Home}/>
             <AnonRoute exact path='/signup' component={Signup} />
             <AnonRoute exact path='/login' component={Login} />
             <PrivateRoute exact path='/private' component={Private} />
-            <NewEvent exact path='/NewEvent' component={NewEventPage} />
+            <NewEventForm exact path='/newEvent' component={NewEventPage} />
           </Switch>
         </div>
       </AuthProvider>

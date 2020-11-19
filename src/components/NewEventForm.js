@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 
-const NewEvent = () => {
+const NewEventForm = () => {
 
     const [event, setEvent] = useState({
         name: '',
@@ -133,4 +133,4 @@ const NewEvent = () => {
 }
 
 
-export default NewEvent;
+export default NewEventForm;

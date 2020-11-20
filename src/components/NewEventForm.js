@@ -7,7 +7,7 @@ const NewEventForm = () => {
         name: '',
         img: '',
         description: '',
-        participants: '',
+        participantsLimit: '',
         organizer: '',
         location: '',
         date: '',
@@ -24,8 +24,7 @@ const NewEventForm = () => {
 
     const submitEvent = (event) => {
         event.preventDefault();
-        /*  const { name, img, description, participants, organizer, location, date, time, category, stars } = this.state;
-  */
+       
     }
 
     return (
@@ -38,10 +37,11 @@ const NewEventForm = () => {
                     <div>
                         <strong>Upload the photo</strong>
                         <input
-                            type="img"
+                            type="file"
                             name="image"
                             value={event.image} /*Como subir la photo? - Claudinary*/
                             onChange={handleChange}
+                            className="form-input"
                         />
                     </div>
                     <div>
@@ -101,7 +101,7 @@ const NewEventForm = () => {
                     <div>
                         <strong>Time</strong>
                         <input
-                            type="date"
+                            type="time"
                             name="time"
                             value={event.time}
                             onChange={handleChange}
@@ -111,8 +111,8 @@ const NewEventForm = () => {
                         <strong>Participants</strong>
                         <input
                             type="number"
-                            name="participants"
-                            value={event.participants} /*Como cambiar el numero de acuerdo con el num de usuarios?*/
+                            name="participantsLimit"
+                            value={event.participantsLimit} /*Como cambiar el numero de acuerdo con el num de usuarios?*/
                             onChange={handleChange}
                         />
                     </div>
@@ -125,7 +125,7 @@ const NewEventForm = () => {
                             onChange={handleChange}
                         />
                     </div>
-                    <button type="submit">ADD NEW EVENT</button>
+                    <button className="btn" type="submit">ADD NEW EVENT</button>
                 </form>
             </div>
         </div>

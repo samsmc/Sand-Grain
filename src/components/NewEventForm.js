@@ -24,7 +24,9 @@ const NewEventForm = () => {
 
     const submitEvent = (event) => {
         event.preventDefault();
-       
+        const response = fetch('/add-event', { method: 'POST', body: JSON.stringify(event) });
+
+        console.log(response.json());
     }
 
     return (

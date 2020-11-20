@@ -14,7 +14,7 @@ const Home = () => {
         <button className="fashion-button"><a href="/user/userCreatedEvents">See events</a></button>
       </div>
       <div>
-        <h3>Events you joined</h3>
+        <h3>Events you have joined</h3>
         <p>Create, edit and remove your events.</p>
         <button className="fashion-button"><a href="/user/userJoinedEvents">check event</a></button>
       </div>

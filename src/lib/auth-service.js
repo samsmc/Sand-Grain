@@ -9,8 +9,6 @@ class Auth {
   }
 
   signup({ username, email, password }) {
-  console.log("Auth -> signup ->  username, email, password ",  username, email, password )
-    
     return this.auth
       .post("/auth/signup", { username, email, password })
       .then(({ data }) => data);

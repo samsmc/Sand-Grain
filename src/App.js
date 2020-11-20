@@ -12,6 +12,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import NewEventForm from "./components/NewEventForm";
 import NewEventPage from "./pages/NewEventPage";
 import Home from "./pages/Home";
+import UserDetails from "./pages/UserDetails";
 
 class App extends Component {
   render() {
@@ -25,7 +26,8 @@ class App extends Component {
             <AnonRoute exact path='/signup' component={Signup} />
             <AnonRoute exact path='/login' component={Login} />
             <PrivateRoute exact path='/private' component={Private} />
-            <NewEventForm exact path='/newEvent' component={NewEventPage} />
+            <NewEventPage exact path='/add-event' component={NewEventForm} />
+            <UserDetails exact path='/user/userDetails' component={UserDetails} />
           </Switch>
         </div>
       </AuthProvider>

@@ -8,10 +8,9 @@ class Signup extends Component {
   handleFormSubmit = (event) => {
     event.preventDefault();
     const { username, email, password } = this.state;
-    console.log('Signup -> form submit', { username, email, password });
     this.props.signup({ username, email, password });
-    console.log("Signup -> this.props.signup", this.props.signup({ username, email, password }))
-    
+
+
   };
 
   handleChange = (event) => {
@@ -26,7 +25,7 @@ class Signup extends Component {
         <h1>Sign Up</h1>
 
         <form onSubmit={this.handleFormSubmit}>
-        <label>Username:</label>
+          <label>Username:</label>
           <input
             type='text'
             name='username'

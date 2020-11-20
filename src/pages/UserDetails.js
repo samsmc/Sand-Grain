@@ -1,36 +1,26 @@
 import React, { useState } from 'react';
+import axiosRequestFunctions from '../lib/auth-service';
 import {withAuth} from '../lib/AuthProvider';
+import axios from 'axios';
 
-const UserDetails = () => {
+const UserDetails = (props) => {
 
 
-    const [userProfile, setUserProfile] = useState({
-        img: '',
-        username: '',
-        email: '',
-        address: '',
-        phone: '',
-    });
-
-    const handleChange = (event) => {
-        const inputValue = event.target.value;
-        const inputName = event.target.name;
-        setUserProfile({ ...userProfile, [inputName]: inputValue });
-    }
+   const [username, setUsername] = useState();
+    const [email, setEmail] = useState();
+    const [address, setAddress] = useState();
+    const [phone, setPhone] = useState();
+    
 
     const submitChanges = async (event) => {
         event.preventDefault();
         /* const formData = new FormData() */
-
-        const response = await fetch('http://localhost:4000/user/userDetails', {
-            method: 'POST',
-            body: userProfile
-        })
-        const json = await response.json()
+        const response = await axios.post(`http://localhost:4000/user/userDetails/${props.user._id}`, {username, email, address, phone})
+        return response
+       /*  const json = await response.json() */
         /* alert(JSON.stringify(response)) */
 
-        console.log(json);
-    }
+            }
 
 
     return (
@@ -55,8 +45,8 @@ const UserDetails = () => {
                         <input
                             type="text"
                             name="username"
-                            value={userProfile.username || ''}
-                            onChange={e=> handleChange(e)}
+                            value={username || ''}
+                            onChange={e=> setUsername(e.target.value)}
                         />
                     </div>
                     <div>
@@ -64,8 +54,8 @@ const UserDetails = () => {
                         <input
                             type="text"
                             name="email"
-                            value={userProfile.email || ''}
-                            onChange={e=> handleChange(e)}
+                            value={email || ''}
+                            onChange={e=>setEmail(e.target.value)}
                         />
                     </div>
                     <div>
@@ -73,8 +63,8 @@ const UserDetails = () => {
                         <input
                             type="text"
                             name="address"
-                            value={userProfile.address || ''}
-                            onChange={e=> handleChange(e)}
+                            value={address || ''}
+                            onChange={e=> setAddress(e.target.value)}
                         />
                     </div>
                     <div>
@@ -82,8 +72,8 @@ const UserDetails = () => {
                         <input
                             type="number"
                             name="phone"
-                            value={userProfile.phone || ''}
-                            onChange={e=> handleChange(e)}
+                            value={phone || ''}
+                            onChange={e=> setPhone(e.target.value)}
                         />
                     </div>
 

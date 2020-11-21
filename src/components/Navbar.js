@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { withAuth } from "../lib/AuthProvider";
-/* import "./Navbar.css"; */
+
 
 class Navbar extends Component {
   render() {
@@ -9,7 +9,7 @@ class Navbar extends Component {
     return (
       <nav className='navbar'>
         <Link to={"/"} id='home-btn'>
-          <h4>Home</h4>
+          <img classname="" src="./images/SandGrainLogo.png" style={{ maxWidth: "100px" }}></img>
         </Link>
         {isLoggedin ? (
           <>

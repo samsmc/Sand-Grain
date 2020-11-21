@@ -9,10 +9,13 @@ import Login from "./pages/Login";
 import Private from "./pages/Private";
 import AnonRoute from "./components/AnonRoute";
 import PrivateRoute from "./components/PrivateRoute";
+
 import NewEventForm from "./components/NewEventForm";
 import NewEventPage from "./pages/NewEventPage";
 import Home from "./pages/Home";
 import UserDetails from "./pages/UserDetails";
+import EventsList from "./components/EventsList";
+import AllEvents from "./pages/AllEvents";
 
 class App extends Component {
   render() {
@@ -28,6 +31,7 @@ class App extends Component {
             <PrivateRoute exact path='/private' component={Private} />
             <NewEventPage exact path='/add-event' component={NewEventForm} />
             <UserDetails exact path='/user/userDetails' component={UserDetails} />
+            <AllEvents exact path= '/events' component = {EventsList} />
           </Switch>
         </div>
       </AuthProvider>

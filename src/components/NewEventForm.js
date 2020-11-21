@@ -1,32 +1,30 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 
 const NewEventForm = () => {
 
-    const [event, setEvent] = useState({
-        name: '',
+    const [eventToCreate, setEventToCreate] = useState({
+        name: 'Samantha',
         img: '',
-        description: '',
-        participantsLimit: '',
-        organizer: '',
-        location: '',
-        date: '',
-        time: '',
-        category: '',
-        stars: '',
+        description: 'A woman in spain',
+        participantsLimit: 3,
+        location: 'BCN',
+        date: new Date(), 
+        time: '22:00',
+        category: 'Meet samantha in person!',
+        stars: 0,
     });
 
     function handleChange(event) {
         const inputValue = event.target.value;
         const inputName = event.target.name;
-        setEvent({ ...event, [inputName]: inputValue });
+        setEventToCreate({ ...eventToCreate, [inputName]: inputValue });
     }
 
-    const submitEvent = (event) => {
+    const submitEvent = async (event) => {
         event.preventDefault();
-        const response = fetch('/add-event', { method: 'POST', body: JSON.stringify(event) });
-
-        console.log(response.json());
+        const response = await axios.post('http://localhost:4000/events/add-event', eventToCreate);
     }
 
     return (
@@ -41,7 +39,7 @@ const NewEventForm = () => {
                         <input
                             type="file"
                             name="image"
-                            value={event.image} /*Como subir la photo? - Claudinary*/
+                            value={eventToCreate.image} /*Como subir la photo? - Claudinary*/
                             onChange={handleChange}
                             className="form-input"
                         />
@@ -51,16 +49,7 @@ const NewEventForm = () => {
                         <input
                             type="text"
                             name="name"
-                            value={event.name}
-                            onChange={handleChange}
-                        />
-                    </div>
-                    <div>
-                        <strong>Organizer</strong>
-                        <input
-                            type="text"
-                            name="tagline"
-                            value={event.organizer} /*Como cargar el user?*/
+                            value={eventToCreate.name}
                             onChange={handleChange}
                         />
                     </div>
@@ -69,7 +58,7 @@ const NewEventForm = () => {
                         <input
                             type="text"
                             name="description"
-                            value={event.description}
+                            value={eventToCreate.description}
                             onChange={handleChange}
                         />
                     </div>
@@ -78,7 +67,7 @@ const NewEventForm = () => {
                         <input
                             type="text"
                             name="category"
-                            value={event.category} /*Como cargar las opciones del dropdown?*/
+                            value={eventToCreate.category} /*Como cargar las opciones del dropdown?*/
                             onChange={handleChange}
                         />
                     </div>
@@ -87,7 +76,7 @@ const NewEventForm = () => {
                         <input
                             type="text"
                             name="location"
-                            value={event.location}
+                            value={eventToCreate.location}
                             onChange={handleChange}
                         />
                     </div>
@@ -96,7 +85,7 @@ const NewEventForm = () => {
                         <input
                             type="date"
                             name="date"
-                            value={event.date}
+                            value={eventToCreate.date}
                             onChange={handleChange}
                         />
                     </div>
@@ -105,7 +94,7 @@ const NewEventForm = () => {
                         <input
                             type="time"
                             name="time"
-                            value={event.time}
+                            value={eventToCreate.time}
                             onChange={handleChange}
                         />
                     </div>
@@ -114,7 +103,7 @@ const NewEventForm = () => {
                         <input
                             type="number"
                             name="participantsLimit"
-                            value={event.participantsLimit} /*Como cambiar el numero de acuerdo con el num de usuarios?*/
+                            value={eventToCreate.participantsLimit} /*Como cambiar el numero de acuerdo con el num de usuarios?*/
                             onChange={handleChange}
                         />
                     </div>
@@ -123,7 +112,7 @@ const NewEventForm = () => {
                         <input
                             type="number"
                             name="stars"
-                            value={event.stars}
+                            value={eventToCreate.stars}
                             onChange={handleChange}
                         />
                     </div>

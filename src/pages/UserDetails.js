@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import axiosRequestFunctions from '../lib/auth-service';
 import {withAuth} from '../lib/AuthProvider';
 import axios from 'axios';
 

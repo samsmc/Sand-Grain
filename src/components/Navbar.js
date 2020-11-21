@@ -13,22 +13,22 @@ class Navbar extends Component {
         </Link>
         {isLoggedin ? (
           <>
-            <p className='navbar-user'>username: {user.username}</p>
+            <p className='navbar-user'><a href="/private"> Account: {user.username}</a></p>
             <button className='navbar-button' onClick={logout}>
               Logout
             </button>
           </>
         ) : (
-          <>
-            <Link to='/login'>
-              <button className='navbar-button'>Login</button>
-            </Link>
-            <br />
-            <Link to='/signup'>
-              <button className='navbar-button'>Sign Up</button>
-            </Link>
-          </>
-        )}
+            <>
+              <Link to='/login'>
+                <button className='navbar-button'>Login</button>
+              </Link>
+              <br />
+              <Link to='/signup'>
+                <button className='navbar-button'>Sign Up</button>
+              </Link>
+            </>
+          )}
       </nav>
     );
   }

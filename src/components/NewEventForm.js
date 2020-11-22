@@ -13,7 +13,7 @@ const NewEventForm = () => {
         date: new Date(),
         time: '22:00',
         category: 'Meet samantha in person!',
-        stars: 0,
+        stars: 0
     });
 
     function handleChange(event) {
@@ -37,9 +37,9 @@ const NewEventForm = () => {
                     <div>
                         <strong>Upload the photo</strong>
                         <input
-                            type="file"
-                            name="image"
-                            value={eventToCreate.image} /*Como subir la photo? - Claudinary*/
+                            type="text"
+                            name="img"
+                            value={eventToCreate.img} /*Como subir la photo? - Claudinary*/
                             onChange={handleChange}
                             className="form-input"
                         />

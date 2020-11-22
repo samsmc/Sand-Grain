@@ -7,30 +7,44 @@ class Navbar extends Component {
   render() {
     const { user, logout, isLoggedin } = this.props;
     return (
-      <nav className='navbar'>
-        <Link to={"/"} id='home-btn'>
-          <img classname="" src="./images/SandGrainLogo.png" style={{ maxWidth: "100px" }}></img>
-        </Link>
-        {isLoggedin ? (
-          <>
-            <p className='navbar-user'><a href="/private"> Account: {user.username}</a></p>
-            <button className='navbar-button' onClick={logout}>
-              Logout
-            </button>
-          </>
-        ) : (
-            <>
-              <Link to='/login'>
-                <button className='navbar-button'>Login</button>
-              </Link>
-              <br />
-              <Link to='/signup'>
-                <button className='navbar-button'>Sign Up</button>
-              </Link>
-            </>
-          )}
-      </nav>
-    );
+      <div>
+
+        <div className="wrapper ">
+          <nav className="nav-main" id="nav-main">
+            <div className="top">
+              <div className="header">
+                <div className="pull-right">
+                  <div className="bt-close js-close-menu text-uppercase">close</div>
+                </div>
+              </div>
+            </div>
+          </nav>
+          <header id="header">
+            <div className="header-main">
+
+              <div className="box-left">
+                <div className="item bt-menu js-nav-main" data-menu-id="menu-main">
+                  <a href="/"><img classname="" src="./images/SandGrainLogo.png" style={{ maxWidth: "100px" }}></img></a>
+                </div>
+              </div>
+              <div className="box-right">
+
+                <div className="item login">
+                  <span>Are you a member?</span> <strong><a className="text-black open_login" href="/login">Register /
+                    log in</a></strong>
+                </div>
+                <div className="item has-tablet" id="bt-submit">
+                  <a href="/submit/" className="button">
+                    <span>SUBMIT YOUR EVENT!</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </header>
+        </div>
+        
+      </div>
+    )
   }
 }
 

@@ -10,7 +10,7 @@ const NewEventForm = () => {
         description: 'A woman in spain',
         participantsLimit: 3,
         location: 'BCN',
-        date: new Date(), 
+        date: new Date(),
         time: '22:00',
         category: 'Meet samantha in person!',
         stars: 0,
@@ -46,7 +46,9 @@ const NewEventForm = () => {
                     </div>
                     <div>
                         <strong>Name</strong>
+                        <label htmlFor="name">Event Name</label>
                         <input
+                            id="name"
                             type="text"
                             name="name"
                             value={eventToCreate.name}

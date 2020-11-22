@@ -3,17 +3,6 @@ import moment from 'moment';
 
 class Event extends Component {
 
-    // constructor() {
-    //     super();
-    //     this.state = {
-    //         events: []
-    //     };
-    // }
-
-    // componentDidMount() {
-
-    // }
-
     render() {
         const { name, description, date, time, img } = this.props.volunteerEvent;
         const formattedDate = moment(date).format('LL');
@@ -90,7 +79,7 @@ class Event extends Component {
                                                                     <use xlinkHref="https://www.awwwards.com/assets/images/sprite-icons.svg#user-2">
                                                                     </use>
                                                                 </svg>
-                                                                <div className="number">48</div>
+                                                                <div className="number">15</div>
                                                             </div>
                                                             <div className="box-tooltip">
                                                                 <div className="tooltip-text">People attending</div>

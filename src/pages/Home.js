@@ -3,47 +3,53 @@ import React from 'react';
 const Home = () => {
 
   return (
-    <div className="wrapper">
+    <div>
+
+
       <section id="content">
         <div className="content-view">
-          <div className="box-site-head js-single-element">
+          <div className="box-site-head">
             <div className="box-bg has-tablet">
-              <a href="/sites/block-rage">
-                <img src="./images/homepage.jpg" alt="Block Rage" width={1900} height={700} className="lazy lazy-loaded" />
+              <a href="/" data-type="submission" className="js-visit-item">
+                <img src="./images/homepage.png" alt="" width={1900} height={700} className="lazy lazy-loaded" />
               </a>
             </div>
+
+
+            <div className="box-photo has-mobile">
+              <a href="/" data-type="submission" className="js-visit-item">
+                <img src="./images/homepage.png" data-src="./images/homepage.png" data-src-2x="./images/homepage.png" alt="" className="lazy lazy-loaded" />
+              </a>
+            </div>
+
             <div className="box-content">
-              <a href="/sites/block-rage" className="item-link" aria-label="Block Rage" />
               <div className="inner vertical-center">
                 <div className="box-info">
                   <div className="row">
-                    <h2 className="heading-large"><a href="/sites/block-rage">Sand Grain</a></h2>
+                    <a href="/"><img src="./images/sdFont.png" style={{ maxWidth: "50%" }}></img></a>
                   </div>
                   <div className="row">
                     <div className="by">
                       <strong>
-                        <a href="/pgssoftware/">Everyone Counts</a></strong>
+                        <h2 className="heading-large">Everyone Counts</h2></strong>
                     </div>
                   </div>
                   <div className="box-notesite js-notes">
-                    <ul>
-                      <li className="circle-note-progress style-design">
-                        <div className="legend">You didn't know you could get so much from giving</div>
-                      </li>
-                    </ul>
-
-                    <div>
-            <a href="/events" id="volunteer-btn">I want to volunteer</a>
-        </div>
-
-
+                    <a href="/events" id="volunteer-btn">I want to volunteer</a>
                   </div>
                 </div>
                 <div className="box-breadcrumb">
                   <div className="box-left">
-                    <span className="text-x-thin">November 19, 2020</span>
+                    <div className="legend">You didn't know you could get so much from giving</div>
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+          <div className="block border-bottom has-tablet">
+            <div className="inner width-3">
+              <div className="box-page-info">
+                <h3 className="h4">Join our comunity, make friends, give your free time.</h3>
               </div>
             </div>
           </div>
@@ -51,23 +57,21 @@ const Home = () => {
       </section>
 
 
-      <div className="">
-    
-    <div className="">
-        <h2>How it works</h2>
-    </div>
-    <div className="block">
-        <div >
+      <div className="inner vertical-center">
+        <h2 className="heading-large">How it works</h2>
+        <div className="circle-note-progress style-design">
+          <div className="wrapper">
             <h3>Join and make a difference</h3>
-            <div>Join our community and create great events to make the the difference.</div>
-        </div>
-        <div>
+            <p>Join our community and create great events to make the the difference.</p>
+          </div>
+          <div>
             <h3>Explore</h3>
             <p>Search for volunteer opportunities, meet other volunteers, make new friends.</p>
+          </div>
         </div>
+      </div>
     </div>
-</div> 
-    </div>
+
   )
 }
 

@@ -20,9 +20,9 @@ class EventsList extends Component {
             });
     }
 
-    renderEvent (eventData) {
+    renderEvent(eventData) {
         return (
-            <Event volunteerEvent={eventData}/>
+            <Event volunteerEvent={eventData} />
         )
     }
 
@@ -46,15 +46,18 @@ class EventsList extends Component {
                                             <span>the events that are waiting for you! We have {this.state.events.length} events</span>
                                         </div>
                                     </div>
-
-                                    
                                 </div>
                             </div>
 
+                            <div className="grid">
+                                <ul className="list-items list-flex list-one-row js-agency-content">
 
-                            {
-                                this.state.events.map(event => this.renderEvent(event))
-                            }
+                                    {
+                                        this.state.events.map(event => this.renderEvent(event))
+                                    }
+
+                                </ul>
+                            </div>
 
                             {/* SELECTED BY REGION */}
                             <div className="block p-0" id="block-directory">
@@ -68,7 +71,7 @@ class EventsList extends Component {
                                                     <div className="box-info">
                                                         <div className="content">
                                                             <div className="row">
-                                                                <strong>Professional Directory</strong>
+                                                                <strong>Explore</strong>
                                                             </div>
                                                             <div className="row row-auto">
                                                                 <div className="title">
@@ -78,7 +81,7 @@ class EventsList extends Component {
                                                                             <div className="option-active">Spain</div>
                                                                             <ul className="options style2">
                                                                                 <li>
-                                                                                    <a className="item-option" href="/directory/U.S.A./">
+                                                                                    <a className="item-option" href="/events/U.S.A./">
                                                                                         U.S.A.
                                           </a>
                                                                                 </li>
@@ -93,7 +96,7 @@ class EventsList extends Component {
                                                         </div>
                                                         <div className="footer">
                                                             <div className="box-left">
-                                                                <strong><a href="/directory/Spain/" className="button x-small border-gray rounded">Discover</a></strong>
+                                                                <strong><a href="/events" className="button x-small border-gray rounded">Discover</a></strong>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -117,16 +120,16 @@ class EventsList extends Component {
                                 <div className="box-left">
                                     <p className="follow">
                                         <strong>Follow us</strong>
-                                        <a className="text-black" rel="noopener" href="https://twitter.com/awwwards" target="_blank">Twitter</a>
-                                        <a className="text-black" rel="noopener" href="https://www.facebook.com/awwwards/" target="_blank">Facebook</a>
-                                        <a className="text-black" rel="noopener" href="https://www.youtube.com/channel/UCYWGYef22gx8PaXZMLHAQsw/" target="_blank">Youtube</a>
-                                        <a className="text-black" rel="noopener" href="https://www.instagram.com/awwwards" target="_blank">Instagram</a>
-                                        <a className="text-black" rel="noopener" href="https://www.linkedin.com/company/awwwards" target="_blank">Linkedin</a>
+                                        <a className="text-black" rel="noopener" href="https://twitter.com" target="_blank">Twitter</a>
+                                        <a className="text-black" rel="noopener" href="https://www.facebook.com" target="_blank">Facebook</a>
+                                        <a className="text-black" rel="noopener" href="https://www.youtube.com/" target="_blank">Youtube</a>
+                                        <a className="text-black" rel="noopener" href="https://www.instagram.com" target="_blank">Instagram</a>
+                                        <a className="text-black" rel="noopener" href="https://www.linkedin.com" target="_blank">Linkedin</a>
                                     </p>
                                 </div>
                                 <div className="box-right">
                                     <div className="headline">
-                                        <strong><a href="https://www.awwwards.com/cancellation" className="link-underlined">Coming
+                                        <strong><a href="/events" className="link-underlined">Coming
                         soon</a></strong>
                                     </div>
                                 </div>

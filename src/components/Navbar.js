@@ -24,14 +24,40 @@ class Navbar extends Component {
                     <use xlinkHref="/" />
                   </svg>
                 </div>
-                <div className="item login">
-                  <span>Are you a member?</span> <strong><a className="text-black open_login" href="/login">Register / log in</a></strong>
+
+                {isLoggedin ? (
+                  <>
+                  <div className="item login">
+                  <span>Are you a member?</span> <strong><a className="text-black open_login" href="/private">{user.username}</a></strong>
+                  <a type="hidden"><span hidden>span</span></a>
+                  <button className="text-black open_login" onClick={logout}>
+              logout </button>
                 </div>
+
                 <div className="item has-tablet" id="bt-submit">
-                  <a href="/submit/" className="button">
+                  <a href="/add-event" className="button">
                     <span>SUBMIT YOUR EVENT</span>
                   </a>
                 </div>
+                </>
+
+
+                ) : (
+                  <> 
+                <div className="item login">
+                  <span>Are you a member?</span> <strong><a className="text-black open_login" href="/login">Register / log in</a></strong>
+                </div>
+
+                <div className="item has-tablet" id="bt-submit">
+                  <a href="/login" className="button">
+                    <span>SUBMIT YOUR EVENT</span>
+                  </a>
+                </div>
+                </>
+                )}
+
+                
+
               </div>
             </div>
           </header>

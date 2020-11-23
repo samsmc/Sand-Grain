@@ -26,13 +26,13 @@ class App extends Component {
           <Navbar />
 
           <Switch>
-          <Home exact path='/' component={Home}/>
+            <Home exact path='/' component={Home} />
             <AnonRoute exact path='/signup' component={Signup} />
             <AnonRoute exact path='/login' component={Login} />
             <PrivateRoute exact path='/private' component={Private} />
             <NewEventPage exact path='/add-event' component={NewEventForm} />
             <UserDetails exact path='/user/userDetails' component={UserDetails} />
-            <EventsList exact path= '/events' component = {EventsList} />
+            <EventsList exact path='/events' component={EventsList} />
           </Switch>
         </div>
       </AuthProvider>

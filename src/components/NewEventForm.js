@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 
+
+
 const NewEventForm = () => {
 
     const [eventToCreate, setEventToCreate] = useState({
@@ -21,6 +23,7 @@ const NewEventForm = () => {
         const inputName = event.target.name;
         setEventToCreate({ ...eventToCreate, [inputName]: inputValue });
     }
+
 
     const submitEvent = async (event) => {
         event.preventDefault();

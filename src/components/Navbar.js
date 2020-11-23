@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+/* import { Link } from "react-router-dom"; */
 import { withAuth } from "../lib/AuthProvider";
 
 
@@ -22,7 +22,7 @@ class Navbar extends Component {
             <ul className="menu active" id="menu-main">
               <li><span className="item open_login">Register / Log in</span></li>
               <li className="active"><a href="/" className="item">Home</a></li>
-              <li><a href="navbar.html" className="item">Events</a></li>
+              <li><a href="/" className="item">Events</a></li>
               <li><a href="/private" className="item">Account</a></li>
             </ul>
           </div>
@@ -49,8 +49,8 @@ class Navbar extends Component {
               {isLoggedin ? (
                 <>
                   <div className="item login">
-                    <span>Are you a member?</span> <strong><a className="text-black open_login" href="/private">{user.username}</a></strong>
-                    <a type="hidden"><span hidden>span</span></a>
+                    <strong><a className="text-black open_login" href="/private">{user.username}</a></strong>
+                    
                     <button className="text-black open_login" onClick={logout}>
                       logout </button>
                   </div>
@@ -80,7 +80,7 @@ class Navbar extends Component {
 
             </div>
             <div className="logo-header">
-                    <a href="/"><img src="./images/SandGrainLogo.png" data-src="./images/homepage.png" data-src-2x="./images/homepage.png" className="lazy lazy-loaded" style={{ maxWidth: "90px" }}></img></a>
+                    <a href="/"><img src="./images/SandGrainLogo.png" alt="logo" className="lazy lazy-loaded" style={{ maxWidth: "90px" }}></img></a>
                   
                 </div>
           </div>

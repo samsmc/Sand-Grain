@@ -16,6 +16,7 @@ import NewEventPage from "./pages/NewEventPage";
 import Home from "./pages/Home";
 import UserDetails from "./pages/UserDetails";
 import EventsList from "./components/EventsList";
+import SingleEvent from "./components/SingleEvent";
 
 
 class App extends Component {
@@ -33,6 +34,7 @@ class App extends Component {
             <NewEventPage exact path='/add-event' component={NewEventForm} />
             <UserDetails exact path='/user/userDetails' component={UserDetails} />
             <EventsList exact path='/events' component={EventsList} />
+            <SingleEvent exact path='/events/:id' component={SingleEvent} />
           </Switch>
         </div>
       </AuthProvider>

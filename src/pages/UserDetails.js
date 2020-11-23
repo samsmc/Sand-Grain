@@ -49,6 +49,7 @@ const UserDetails = (props) => {
 
 
     return (
+
         <div className="NewEvent">
             <div>
                 <h1>Manage your details</h1>

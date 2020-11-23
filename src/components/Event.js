@@ -1,7 +1,45 @@
 import React, { Component } from 'react';
 import moment from 'moment';
+import { withAuth } from "../lib/AuthProvider";
+import axios from 'axios';
 
 class Event extends Component {
+
+    constructor() {
+        super();
+
+        this.state = {
+            isUserParticipating: false
+        }
+
+        this.joinEvent = this.joinEvent.bind(this);
+        this.isUserAlreadyParticipating = this.isUserAlreadyParticipating.bind(this);
+    }
+git 
+    componentDidMount() {
+        let isUserParticipating = this.isUserAlreadyParticipating();
+        this.setState({isUserParticipating: isUserParticipating})
+    }
+
+    isUserAlreadyParticipating() {
+        console.log(`PARTICIPANTS ${JSON.stringify(this.props.volunteerEvent.participants)}`);
+        console.log(`USER ${JSON.stringify(this.props.user._id)}`);
+
+        let user = this.props.user._id;
+        let howManyTimesParticipating = this.props.volunteerEvent.participants.filter(participant => participant._id === user).length;
+        let isUserParticipating = howManyTimesParticipating > 0;
+
+        console.log(`IS USER PARTICIPATING: ${isUserParticipating}  howManyTimesParticipating ${howManyTimesParticipating}`);
+    }
+
+    joinEvent() {
+        console.log("JOINING EVENT")
+        console.log(`props ... ${JSON.stringify(this.props)}`)
+        axios.post(`http://localhost:4000/events/add-participant-to-event`, { user: this.props.user._id, event: this.props.volunteerEvent._id })
+        .then(response => {
+            console.log(`RESPONSE: ${JSON.stringify(response)}`)
+        })
+    }
 
     render() {
         const { name, description, date, time, location, img } = this.props.volunteerEvent;
@@ -30,7 +68,7 @@ class Event extends Component {
                                 <h3>{description}</h3>
                             </div>
                             <div className="row">in :
-                              <strong>{location}</strong>,
+                              <strong>{location}</strong>
                              </div>
                         </div>
                         <div className="footer">
@@ -82,11 +120,10 @@ class Event extends Component {
                                     </div>
                                 </div>
                             </div>
-                            <div className="box-right">
-                                <a href="" className="button x-small border-gray rounded">
-                                    Join Now
-                                                </a>
-                            </div>
+                                <div className="box-right">
+                                <button disabled={this.state.isUserParticipating} onClick={this.joinEvent} className="button x-small border-gray rounded" type="button">Join Now</button>
+                                     </div>
+                                     
                         </div>
                     </div>
                 </div>
@@ -98,4 +135,4 @@ class Event extends Component {
 
 
 
-export default Event;
+export default withAuth(Event);

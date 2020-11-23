@@ -8,12 +8,12 @@ const NewEventForm = () => {
 
     const [eventToCreate, setEventToCreate] = useState({
         name: 'Samantha',
-        img: '',
+        img: 'Paste the URL link',
         description: 'A revolutionary event',
         participantsLimit: 3,
         location: 'BCN',
         date: new Date(),
-        time: '22:00',
+        time: '14:00',
         category: 'cleaning',
         stars: 0
     });
@@ -42,7 +42,7 @@ const NewEventForm = () => {
                         <input
                             type="text"
                             name="img"
-                            value={eventToCreate.img} /*Como subir la photo? - Claudinary*/
+                            value={eventToCreate.img} 
                             onChange={handleChange}
                             className="form-input"
                         />

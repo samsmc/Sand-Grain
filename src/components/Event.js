@@ -4,7 +4,7 @@ import moment from 'moment';
 class Event extends Component {
 
     render() {
-        const { name, description, date, time, img } = this.props.volunteerEvent;
+        const { name, description, date, time, location, img } = this.props.volunteerEvent;
         const formattedDate = moment(date).format('LL');
 
         return (
@@ -24,15 +24,14 @@ class Event extends Component {
                             </div>
                             <div className="row">
                                 <strong>{formattedDate}</strong>, at {time}
+                                <h3>By participants</h3>
                             </div>
                             <div className="row row-auto">
-                                <h3>
-                                    <a href="/academy/webinar/live-design-jury-website-reviews-peter-smart-nahel-moussi-jonas-lempa">{description}</a>
-                                </h3>
+                                <h3>{description}</h3>
                             </div>
-                            <div className="row">By
-                                                <strong> Roi Docabo</strong>, <strong>Samantha Martins</strong>,
-                                            </div>
+                            <div className="row">in :
+                              <strong>{location}</strong>,
+                             </div>
                         </div>
                         <div className="footer">
                             <div className="box-left">
@@ -84,7 +83,7 @@ class Event extends Component {
                                 </div>
                             </div>
                             <div className="box-right">
-                                <a href="/academy/webinar/live-design-jury-website-reviews-peter-smart-nahel-moussi-jonas-lempa" className="button x-small border-gray rounded">
+                                <a href="" className="button x-small border-gray rounded">
                                     Join Now
                                                 </a>
                             </div>

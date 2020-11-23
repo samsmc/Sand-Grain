@@ -9,12 +9,12 @@ const NewEventForm = () => {
     const [eventToCreate, setEventToCreate] = useState({
         name: 'Samantha',
         img: '',
-        description: 'A woman in spain',
+        description: 'A revolutionary event',
         participantsLimit: 3,
         location: 'BCN',
         date: new Date(),
         time: '22:00',
-        category: 'Meet samantha in person!',
+        category: 'cleaning',
         stars: 0
     });
 
@@ -121,7 +121,7 @@ const NewEventForm = () => {
                             onChange={handleChange}
                         />
                     </div>
-                    <button className="btn" type="submit">ADD NEW EVENT</button>
+                    <button className="btn" type="submit"><a href="/events">ADD NEW EVENT</a></button>
                 </form>
             </div>
         </div>

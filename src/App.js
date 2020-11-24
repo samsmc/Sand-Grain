@@ -18,6 +18,7 @@ import UserDetails from "./pages/UserDetails";
 import EventsList from "./components/EventsList";
 import SingleEvent from "./components/SingleEvent";
 import UserCreatedEvents from "./components/UserCreatedEvents";
+import JoinedEvents from "./components/JoinedEvents";
 
 
 class App extends Component {
@@ -37,6 +38,7 @@ class App extends Component {
             <PrivateRoute exact path='/events' component={EventsList} />
             <PrivateRoute exact path='/events/:id' component={SingleEvent} />
             <PrivateRoute exact path='/user/UserCreatedEvents' component={UserCreatedEvents}/>
+            <PrivateRoute exact path='/user/userJoinedEvents' component={JoinedEvents}/>
           </Switch>
         </div>
       </AuthProvider>

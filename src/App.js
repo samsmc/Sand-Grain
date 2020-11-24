@@ -17,6 +17,7 @@ import Home from "./pages/Home";
 import UserDetails from "./pages/UserDetails";
 import EventsList from "./components/EventsList";
 import SingleEvent from "./components/SingleEvent";
+import UserCreatedEvents from "./components/UserCreatedEvents";
 
 
 class App extends Component {
@@ -31,10 +32,11 @@ class App extends Component {
             <AnonRoute exact path='/signup' component={Signup} />
             <AnonRoute exact path='/login' component={Login} />
             <PrivateRoute exact path='/private' component={Private} />
-            <NewEventPage exact path='/add-event' component={NewEventForm} />
-            <UserDetails exact path='/user/userDetails' component={UserDetails} />
-            <EventsList exact path='/events' component={EventsList} />
-            <SingleEvent exact path='/events/:id' component={SingleEvent} />
+            <PrivateRoute exact path='/add-event' component={NewEventForm} />
+            <PrivateRoute exact path='/user/userDetails' component={UserDetails} />
+            <PrivateRoute exact path='/events' component={EventsList} />
+            <PrivateRoute exact path='/events/:id' component={SingleEvent} />
+            <PrivateRoute exact path='/user/UserCreatedEvents' component={UserCreatedEvents}/>
           </Switch>
         </div>
       </AuthProvider>

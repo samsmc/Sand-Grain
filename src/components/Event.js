@@ -15,7 +15,7 @@ class Event extends Component {
         this.joinEvent = this.joinEvent.bind(this);
         this.isUserAlreadyParticipating = this.isUserAlreadyParticipating.bind(this);
     }
-git 
+ 
     componentDidMount() {
         let isUserParticipating = this.isUserAlreadyParticipating();
         this.setState({isUserParticipating: isUserParticipating})

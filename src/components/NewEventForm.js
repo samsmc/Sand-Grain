@@ -15,7 +15,6 @@ const NewEventForm = () => {
         date: new Date(),
         time: '14:00',
         category: 'cleaning',
-        stars: 0
     });
 
     function handleChange(event) {
@@ -42,7 +41,7 @@ const NewEventForm = () => {
                         <input
                             type="text"
                             name="img"
-                            value={eventToCreate.img} 
+                            value={eventToCreate.img}
                             onChange={handleChange}
                             className="form-input"
                         />
@@ -51,7 +50,6 @@ const NewEventForm = () => {
                         <strong>Name</strong>
                         <label htmlFor="name">Event Name</label>
                         <input
-                            id="name"
                             type="text"
                             name="name"
                             value={eventToCreate.name}
@@ -112,15 +110,7 @@ const NewEventForm = () => {
                             onChange={handleChange}
                         />
                     </div>
-                    <div>
-                        <strong>Stars</strong>
-                        <input
-                            type="number"
-                            name="stars"
-                            value={eventToCreate.stars}
-                            onChange={handleChange}
-                        />
-                    </div>
+
                     <button className="btn" type="submit"><a href="/events">ADD NEW EVENT</a></button>
                 </form>
             </div>

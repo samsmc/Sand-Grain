@@ -5,14 +5,14 @@ import { Link } from "react-router-dom";
 
 
 
-class NewEventForm extends React.Component {
+class EventForm extends React.Component {
 
     constructor(){
         super();
 
         this.state = {
             eventToCreate: {
-                name: 'Samantha',
+                name: 'Feeding the homeless',
                 img: 'Paste the URL link',
                 description: 'A revolutionary event',
                 participantsLimit: 3,
@@ -58,6 +58,9 @@ class NewEventForm extends React.Component {
         console.log(` this.props.session: ${JSON.stringify(this.props   )}`)
 
         axios.post('http://localhost:4000/events/add-event', this.state.eventToCreate, { withCredentials: true })
+        .then(response => {
+            this.props.history.push("/events");
+        })
     }
 
     render() {
@@ -144,9 +147,7 @@ class NewEventForm extends React.Component {
                         />
                     </div>
 
-                    <Link to="/events">
                         <button className="btn" type="submit">ADD NEW EVENT</button>
-                        </Link>
                 </form>
             </div>
         </div>
@@ -155,4 +156,4 @@ class NewEventForm extends React.Component {
 }
 
 
-export default withAuth(NewEventForm);
+export default withAuth(EventForm);

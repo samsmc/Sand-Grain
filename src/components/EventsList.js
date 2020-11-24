@@ -9,9 +9,16 @@ class EventsList extends Component {
         this.state = {
             events: []
         };
+
+        this.refresh = this.refresh.bind(this);
+        this.fetchEvents = this.fetchEvents.bind(this);
     }
 
     componentDidMount() {
+        this.fetchEvents();
+    }
+
+    fetchEvents() {
         axios
             .get('http://localhost:4000/events')
             .then(response => {
@@ -20,9 +27,13 @@ class EventsList extends Component {
             });
     }
 
+    refresh() {
+        this.fetchEvents();
+    }
+
     renderEvent(eventData) {
         return (
-            <Event volunteerEvent={eventData} />
+            <Event refresh={this.refresh} volunteerEvent={eventData} />
         )
     }
 

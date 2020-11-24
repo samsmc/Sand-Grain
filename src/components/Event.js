@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import moment from 'moment';
 import { withAuth } from "../lib/AuthProvider";
 import axios from 'axios';
+import { Link } from "react-router-dom";
+
 
 class Event extends Component {
 
@@ -9,16 +11,15 @@ class Event extends Component {
         super();
 
         this.state = {
-            isUserParticipating: false
+            isAdmin: false
         }
 
         this.joinEvent = this.joinEvent.bind(this);
         this.isUserAlreadyParticipating = this.isUserAlreadyParticipating.bind(this);
     }
- 
+
     componentDidMount() {
-        let isUserParticipating = this.isUserAlreadyParticipating();
-        this.setState({isUserParticipating: isUserParticipating})
+        this.setState({ isAdmin: this.props.isAdmin })
     }
 
     isUserAlreadyParticipating() {
@@ -27,31 +28,72 @@ class Event extends Component {
 
         let user = this.props.user._id;
         let howManyTimesParticipating = this.props.volunteerEvent.participants.filter(participant => participant._id === user).length;
-        let isUserParticipating = howManyTimesParticipating > 0;
-
-        console.log(`IS USER PARTICIPATING: ${isUserParticipating}  howManyTimesParticipating ${howManyTimesParticipating}`);
+        return howManyTimesParticipating > 0;
     }
 
     joinEvent() {
         console.log("JOINING EVENT")
         console.log(`props ... ${JSON.stringify(this.props)}`)
         axios.post(`http://localhost:4000/events/add-participant-to-event`, { user: this.props.user._id, event: this.props.volunteerEvent._id })
-        .then(response => {
-            console.log(`RESPONSE: ${JSON.stringify(response)}`)
-        })
+            .then(response => {
+                console.log(`RESPONSE: ${JSON.stringify(response)}`)
+
+                this.props.refresh();
+            })
+    }
+
+    renderButtons() {
+        const { participants, participantsLimit } = this.props.volunteerEvent;
+
+        let isUserAlreadyParticipating = this.isUserAlreadyParticipating();
+        const participantsCount = participants.length;
+
+        if (this.state.isAdmin) {
+            return (
+                <div style={{display: 'flex', flexDirection: 'row'}}>
+                    <div className="box-right">
+                        <a className="button x-small border-gray rounded" type="button">Delete</a>
+                    </div>
+
+                    <Link to={`/events/`}>
+                        <div className="box-right" style={{ marginLeft: 5 }}>
+                            <a className="button x-small border-gray rounded" type="button">Edit</a>
+                        </div>
+                    </Link>
+                </div>
+            )
+        } else {
+            return (
+                <div style={{display: 'flex', flexDirection: 'row'}}>
+                    {
+                        participantsCount < participantsLimit ?
+                            <div className="box-right">
+                                <button disabled={this.state.isUserParticipating} onClick={this.joinEvent} className="button x-small border-gray rounded" type="button">{isUserAlreadyParticipating ? 'Joined' : 'Join Now'}</button>
+                            </div>
+                            :
+                            <div className="box-right">
+                                <button disabled className="button x-small border-gray rounded" type="button">Full</button>
+                            </div>
+                    }
+                </div>
+            )
+        }
     }
 
     render() {
-        const { name, description, date, time, location, img } = this.props.volunteerEvent;
+        const { name, description, date, time, location, img, participants, participantsLimit } = this.props.volunteerEvent;
         const formattedDate = moment(date).format('LL');
+
+        let isUserAlreadyParticipating = this.isUserAlreadyParticipating();
+        const participantsCount = participants.length;
 
         return (
             <li className="col-3">
                 <div className="box-item">
                     <figure className="rollover">
-                        <a href="/events/:id" className="js-lightbox-sidebar">
+                        <a href={`/events/${this.props.volunteerEvent._id}`} className="js-lightbox-sidebar">
                             <div className="box-photo">
-                                <img width={417} height={298} alt="event" src={img} className="lazy lazy-loaded img-container" style={{ width: 417, height: 298, backgroundImage: "url('./images/evento1.jpg'", backgroundSize: "cover" }} />
+                                <img width={417} height={298} alt="event" src={img} className="lazy lazy-loaded img-container" style={{ width: 417, height: 298, backgroundImage: "url('https://images.unsplash.com/photo-1559027615-cd4628902d4a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1053&q=80'", backgroundSize: "cover" }} />
                             </div>
                         </a>
                     </figure>
@@ -69,7 +111,7 @@ class Event extends Component {
                             </div>
                             <div className="row">in :
                               <strong>{location}</strong>
-                             </div>
+                            </div>
                         </div>
                         <div className="footer">
                             <div className="box-left">
@@ -111,7 +153,7 @@ class Event extends Component {
                                                     <use xlinkHref="https://www.awwwards.com/assets/images/sprite-icons.svg#user-2">
                                                     </use>
                                                 </svg>
-                                                <div className="number">15</div>
+                                                <div className="number">{participantsCount}</div>
                                             </div>
                                             <div className="box-tooltip">
                                                 <div className="tooltip-text">People attending</div>
@@ -120,10 +162,10 @@ class Event extends Component {
                                     </div>
                                 </div>
                             </div>
-                                <div className="box-right">
-                                <button disabled={this.state.isUserParticipating} onClick={this.joinEvent} className="button x-small border-gray rounded" type="button">Join Now</button>
-                                     </div>
-                                     
+
+                            {this.renderButtons()}
+
+
                         </div>
                     </div>
                 </div>
@@ -133,6 +175,10 @@ class Event extends Component {
     }
 }
 
+Event.defaultProps = {
+    refresh: () => null,
+    isAdmin: false
+}
 
 
 export default withAuth(Event);

@@ -39,7 +39,8 @@ import { Link } from "react-router-dom";
           <div>
              
             <Link to = "/add-event">
-            <h3>Create a new event </h3></Link>
+              <h3>Create a new event </h3>
+            </Link>
             <p>Ready to organize a new adventure?</p>
            
           </div>

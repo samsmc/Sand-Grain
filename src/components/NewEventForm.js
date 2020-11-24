@@ -1,48 +1,81 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { withAuth } from '../lib/AuthProvider';
+import { Link } from "react-router-dom";
 
 
 
+class NewEventForm extends React.Component {
 
-const NewEventForm = () => {
+    constructor(){
+        super();
 
-    const [eventToCreate, setEventToCreate] = useState({
-        name: 'Samantha',
-        img: 'Paste the URL link',
-        description: 'A revolutionary event',
-        participantsLimit: 3,
-        location: 'BCN',
-        date: new Date(),
-        time: '14:00',
-        category: 'cleaning',
-    });
+        this.state = {
+            eventToCreate: {
+                name: 'Samantha',
+                img: 'Paste the URL link',
+                description: 'A revolutionary event',
+                participantsLimit: 3,
+                location: 'BCN',
+                date: new Date(),
+                time: '14:00',
+                category: 'cleaning'
+            }
+        }
 
-    function handleChange(event) {
+        this.handleChange = this.handleChange.bind(this);
+        this.submitEvent = this.submitEvent.bind(this);
+    }
+
+    // const [eventToCreate, setEventToCreate] = useState({
+    //     name: 'Samantha',
+    //     img: 'Paste the URL link',
+    //     description: 'A revolutionary event',
+    //     participantsLimit: 3,
+    //     location: 'BCN',
+    //     date: new Date(),
+    //     time: '14:00',
+    //     category: 'cleaning',
+    // });
+
+    // function handleChange(event) {
+    //     const inputValue = event.target.value;
+    //     const inputName = event.target.name;
+    //     setEventToCreate({ ...eventToCreate, [inputName]: inputValue });
+    // }
+
+    handleChange(event) {
         const inputValue = event.target.value;
         const inputName = event.target.name;
-        setEventToCreate({ ...eventToCreate, [inputName]: inputValue });
+        this.setState({eventToCreate : { ...this.state.eventToCreate, [inputName]: inputValue }});
     }
 
 
-    const submitEvent = async (event) => {
+    submitEvent = (event) => {
         event.preventDefault();
-        const response = await axios.post('http://localhost:4000/events/add-event', eventToCreate);
+        // console.log(`EVENT: ${JSON.stringify(event)}`)
+        console.log(`EVENT eventToCreate: ${JSON.stringify(this.state.eventToCreate)}`)
+        console.log(` this.props.session: ${JSON.stringify(this.props   )}`)
+
+        axios.post('http://localhost:4000/events/add-event', this.state.eventToCreate, { withCredentials: true })
     }
 
+    render() {
+        
     return (
         <div className="NewEvent">
             <div>
                 <h1>Add a new event</h1>
             </div>
             <div>
-                <form onSubmit={submitEvent}>
+                <form onSubmit={this.submitEvent}>
                     <div>
                         <strong>Upload the photo</strong>
                         <input
                             type="text"
                             name="img"
-                            value={eventToCreate.img}
-                            onChange={handleChange}
+                            value={this.state.eventToCreate.img}
+                            onChange={this.handleChange}
                             className="form-input"
                         />
                     </div>
@@ -52,8 +85,8 @@ const NewEventForm = () => {
                         <input
                             type="text"
                             name="name"
-                            value={eventToCreate.name}
-                            onChange={handleChange}
+                            value={this.state.eventToCreate.name}
+                            onChange={this.handleChange}
                         />
                     </div>
                     <div>
@@ -61,8 +94,8 @@ const NewEventForm = () => {
                         <input
                             type="text"
                             name="description"
-                            value={eventToCreate.description}
-                            onChange={handleChange}
+                            value={this.state.eventToCreate.description}
+                            onChange={this.handleChange}
                         />
                     </div>
                     <div>
@@ -70,8 +103,8 @@ const NewEventForm = () => {
                         <input
                             type="text"
                             name="category"
-                            value={eventToCreate.category} /*Como cargar las opciones del dropdown?*/
-                            onChange={handleChange}
+                            value={this.state.eventToCreate.category} /*Como cargar las opciones del dropdown?*/
+                            onChange={this.handleChange}
                         />
                     </div>
                     <div>
@@ -79,8 +112,8 @@ const NewEventForm = () => {
                         <input
                             type="text"
                             name="location"
-                            value={eventToCreate.location}
-                            onChange={handleChange}
+                            value={this.state.eventToCreate.location}
+                            onChange={this.handleChange}
                         />
                     </div>
                     <div>
@@ -88,8 +121,8 @@ const NewEventForm = () => {
                         <input
                             type="date"
                             name="date"
-                            value={eventToCreate.date}
-                            onChange={handleChange}
+                            value={this.state.eventToCreate.date}
+                            onChange={this.handleChange}
                         />
                     </div>
                     <div>
@@ -97,8 +130,8 @@ const NewEventForm = () => {
                         <input
                             type="time"
                             name="time"
-                            value={eventToCreate.time}
-                            onChange={handleChange}
+                            value={this.state.eventToCreate.time}
+                            onChange={this.handleChange}
                         />
                     </div>
                     <div>
@@ -106,17 +139,20 @@ const NewEventForm = () => {
                         <input
                             type="number"
                             name="participantsLimit"
-                            value={eventToCreate.participantsLimit} /*Como cambiar el numero de acuerdo con el num de usuarios?*/
-                            onChange={handleChange}
+                            value={this.state.eventToCreate.participantsLimit} /*Como cambiar el numero de acuerdo con el num de usuarios?*/
+                            onChange={this.handleChange}
                         />
                     </div>
 
-                    <button className="btn" type="submit"><a href="/events">ADD NEW EVENT</a></button>
+                    <Link to="/events">
+                        <button className="btn" type="submit">ADD NEW EVENT</button>
+                        </Link>
                 </form>
             </div>
         </div>
     );
+    }
 }
 
 
-export default NewEventForm;
+export default withAuth(NewEventForm);

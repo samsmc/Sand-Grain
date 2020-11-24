@@ -15,6 +15,7 @@ class Event extends Component {
         }
 
         this.joinEvent = this.joinEvent.bind(this);
+        this.unsubscribeFromEvent = this.unsubscribeFromEvent.bind(this);
         this.isUserAlreadyParticipating = this.isUserAlreadyParticipating.bind(this);
     }
 
@@ -23,8 +24,8 @@ class Event extends Component {
     }
 
     isUserAlreadyParticipating() {
-        console.log(`PARTICIPANTS ${JSON.stringify(this.props.volunteerEvent.participants)}`);
-        console.log(`USER ${JSON.stringify(this.props.user._id)}`);
+        // console.log(`PARTICIPANTS ${JSON.stringify(this.props.volunteerEvent.participants)}`);
+        // console.log(`USER ${JSON.stringify(this.props.user._id)}`);
 
         let user = this.props.user._id;
         let howManyTimesParticipating = this.props.volunteerEvent.participants.filter(participant => participant._id === user).length;
@@ -34,7 +35,18 @@ class Event extends Component {
     joinEvent() {
         console.log("JOINING EVENT")
         console.log(`props ... ${JSON.stringify(this.props)}`)
-        axios.post(`http://localhost:4000/events/add-participant-to-event`, { user: this.props.user._id, event: this.props.volunteerEvent._id })
+        axios.post(`http://localhost:4000/events/add-participant-to-event`, { user: this.props.user._id, event: this.props.volunteerEvent._id }, { withCredentials: true })
+            .then(response => {
+                console.log(`RESPONSE: ${JSON.stringify(response)}`)
+
+                this.props.refresh();
+            })
+    }
+
+    unsubscribeFromEvent() {
+        console.log("UNSUBSCRIBING FROM EVENT")
+        console.log(`props ... ${JSON.stringify(this.props)}`)
+        axios.put(`http://localhost:4000/events/delete-participant-to-event`, { user: this.props.user._id, event: this.props.volunteerEvent._id }, { withCredentials: true })
             .then(response => {
                 console.log(`RESPONSE: ${JSON.stringify(response)}`)
 
@@ -50,25 +62,26 @@ class Event extends Component {
 
         if (this.state.isAdmin) {
             return (
-                <div style={{display: 'flex', flexDirection: 'row'}}>
+                <div style={{ display: 'flex', flexDirection: 'row' }}>
                     <div className="box-right">
-                        <a className="button x-small border-gray rounded" type="button">Delete</a>
+                        <strong className="button x-small border-gray rounded" type="button">Delete</strong>
                     </div>
 
-                    <Link to={`/events/`}>
-                        <div className="box-right" style={{ marginLeft: 5 }}>
-                            <a className="button x-small border-gray rounded" type="button">Edit</a>
+                    <Link to={`/add-event/${this.props.volunteerEvent._id}`}>
+                    <div className="box-right" style={{ marginLeft: 5 }}>
+                            <strong className="button x-small border-gray rounded" type="button">Edit</strong>
                         </div>
                     </Link>
+
                 </div>
             )
         } else {
             return (
-                <div style={{display: 'flex', flexDirection: 'row'}}>
+                <div style={{ display: 'flex', flexDirection: 'row' }}>
                     {
                         participantsCount < participantsLimit ?
                             <div className="box-right">
-                                <button disabled={this.state.isUserParticipating} onClick={this.joinEvent} className="button x-small border-gray rounded" type="button">{isUserAlreadyParticipating ? 'Joined' : 'Join Now'}</button>
+                                <button onClick={isUserAlreadyParticipating ? this.unsubscribeFromEvent : this.joinEvent} className="button x-small border-gray rounded" type="button">{isUserAlreadyParticipating ? 'Unsubscribe' : 'Join Now'}</button>
                             </div>
                             :
                             <div className="box-right">

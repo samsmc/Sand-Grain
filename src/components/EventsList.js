@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Event from "./Event";
+import { withAuth } from "../lib/AuthProvider";
+
 
 class EventsList extends Component {
 
@@ -156,4 +158,4 @@ class EventsList extends Component {
 
 
 
-export default EventsList;
+export default withAuth(EventsList);

@@ -33,6 +33,7 @@ class App extends Component {
             <AnonRoute exact path='/login' component={Login} />
             <PrivateRoute exact path='/private' component={Private} />
             <PrivateRoute exact path='/add-event' component={EventForm} />
+            <PrivateRoute exact path='/add-event/:id' component={EventForm} />
             <PrivateRoute exact path='/user/userDetails' component={UserDetails} />
             <PrivateRoute exact path='/events' component={EventsList} />
             <PrivateRoute exact path='/events/:id' component={SingleEvent} />

@@ -11,17 +11,28 @@ class UserCreatedEvents extends Component {
         this.state = {
             events: [],
         }
+
+        this.fetchEvents = this.fetchEvents.bind(this);
+        this.renderEvent = this.renderEvent.bind(this);
     }
-    
+
 
 
     componentDidMount() {
+        this.fetchEvents();
+    }
+
+    fetchEvents() {
         axios
             .get(`http://localhost:4000/user/userCreatedEvents`, { withCredentials: true })
             .then(res => {
                 console.log(res.data);
                 this.setState({ events: res.data });
             });
+    }
+
+    refresh() {
+        this.fetchEvents();
     }
 
 
@@ -48,7 +59,7 @@ class UserCreatedEvents extends Component {
                                                     Check
                                                 </a>
                                             </h2>
-                                            <span>the events that are waiting for you! We have {this.state.events.length} events</span>
+                                            <span>the events that you have joined! We have {this.state.events.length} events</span>
                                         </div>
                                     </div>
                                 </div>
@@ -147,7 +158,7 @@ class UserCreatedEvents extends Component {
         )
     }
 
-    
+
 }
 
 

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { withAuth } from '../lib/AuthProvider';
 import axios from 'axios';
 import service from "../api/service";
-
+import {useHistory} from 'react-router-dom';
 
 
 const UserDetails = (props) => {
@@ -18,8 +18,9 @@ const UserDetails = (props) => {
     const submitChanges = async (event) => {
         event.preventDefault();
         /* const formData = new FormData() */
-        const response = await axios.post(`http://localhost:4000/user/userDetails/${props.user._id}`, { username, email, address, phone, imgUrl })
-        return response
+        const response = await axios.put(`http://localhost:4000/user/userDetails/${props.user._id}`, { username, email, address, phone, imgUrl })
+        // return response 
+      props.history.push('/private');
         /*  const json = await response.json() */
         /* alert(JSON.stringify(response)) */
 

@@ -1,9 +1,32 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { withAuth } from "../lib/AuthProvider";
+import axios from 'axios'
 
 
 class Navbar extends Component {
+  constructor() {
+  super()
+  this.state = {
+userInfo:{}
+  }
+}
+  getId()  {
+    axios.get(`http://localhost:4000/user/userCreated/${this.props.user._id}` ,{withCredentials:true})
+    .then(res=> 
+      this.setState({userInfo: res.data })
+      )
+      .catch(error => {
+        console.log(error)
+      })
+ 
+
+
+  
+ }
+componentDidMount(){
+  this.getId()
+}
   render() {
     const { user, logout, isLoggedin } = this.props;
     
@@ -38,7 +61,7 @@ class Navbar extends Component {
               {isLoggedin ? (
                 <>
                   <div className="item login">
-                    <strong><a className="text-black open_login" href="/private">{user.username}</a></strong>
+                    <strong><a className="text-black open_login" href="/private">{this.state.userInfo.username}</a></strong>
                     
                     <button className="text-black open_login" onClick={logout}>
                       logout </button>
@@ -69,7 +92,7 @@ class Navbar extends Component {
 
             </div>
             <div className="logo-header">
-                    <a href="/"><img src="./images/SandGrainLogo.png" alt="logo" className="lazy lazy-loaded" style={{ maxWidth: "90px" }}></img></a>
+                    <Link to ="/" ><img src="https://res.cloudinary.com/dgvmah987/image/upload/v1606300992/SandGrainLogo_eab3bk.png" alt="logo" className="lazy lazy-loaded" style={{ maxWidth: "90px" }}></img></Link>
                   
                 </div>
           </div>

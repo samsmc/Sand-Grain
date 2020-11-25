@@ -9,7 +9,6 @@ class Event extends Component {
 
     constructor() {
         super();
-
         this.state = {
             isAdmin: false
         }
@@ -17,6 +16,7 @@ class Event extends Component {
         this.joinEvent = this.joinEvent.bind(this);
         this.unsubscribeFromEvent = this.unsubscribeFromEvent.bind(this);
         this.isUserAlreadyParticipating = this.isUserAlreadyParticipating.bind(this);
+        this.deleteEvent = this.deleteEvent.bind(this);
     }
 
     componentDidMount() {
@@ -24,12 +24,26 @@ class Event extends Component {
     }
 
     isUserAlreadyParticipating() {
-        // console.log(`PARTICIPANTS ${JSON.stringify(this.props.volunteerEvent.participants)}`);
-        // console.log(`USER ${JSON.stringify(this.props.user._id)}`);
-
+        console.log(`PARTICIPANTS ${JSON.stringify(this.props.volunteerEvent.participants)}`);
+        console.log(`USER ${JSON.stringify(this.props.user._id)}`);
         let user = this.props.user._id;
-        let howManyTimesParticipating = this.props.volunteerEvent.participants.filter(participant => participant._id === user).length;
-        return howManyTimesParticipating > 0;
+        // let howManyTimesParticipating = this.props.volunteerEvent.participants.filter(participant => participant._id === user).length;
+        // return howManyTimesParticipating > 0;
+        let participants = this.props.volunteerEvent.participants.map(participant => {
+            return participant._id ? participant._id : participant
+        })
+
+        console.log(`PARTICIPANTS ARRAY: ${participants}`)
+        return participants.includes(user);
+    }
+
+    deleteEvent() {
+        console.log("DELETING EVENT")
+        axios.delete(`${process.env.REACT_APP_API_URL}/events/delete/${this.props.volunteerEvent._id}`, { withCredentials: true })
+            .then(response => {
+                console.log(`RESPONSE: ${JSON.stringify(response)}`)
+                this.props.refresh();
+            })
     }
 
     joinEvent() {
@@ -38,7 +52,6 @@ class Event extends Component {
         axios.post(`${process.env.REACT_APP_API_URL}/events/add-participant-to-event`, { user: this.props.user._id, event: this.props.volunteerEvent._id }, { withCredentials: true })
             .then(response => {
                 console.log(`RESPONSE: ${JSON.stringify(response)}`)
-
                 this.props.refresh();
             })
     }
@@ -49,37 +62,34 @@ class Event extends Component {
         axios.put(`${process.env.REACT_APP_API_URL}/events/delete-participant-to-event`, { user: this.props.user._id, event: this.props.volunteerEvent._id }, { withCredentials: true })
             .then(response => {
                 console.log(`RESPONSE: ${JSON.stringify(response)}`)
-
                 this.props.refresh();
             })
     }
 
     renderButtons() {
         const { participants, participantsLimit } = this.props.volunteerEvent;
-
         let isUserAlreadyParticipating = this.isUserAlreadyParticipating();
-        const participantsCount = participants.length;
+        console.log(`isUserAlreadyParticipating ${isUserAlreadyParticipating}`);
 
+        const participantsCount = participants.length;
         if (this.state.isAdmin) {
             return (
                 <div style={{ display: 'flex', flexDirection: 'row' }}>
-                    <div className="box-right">
+                    <button className="box-right" onClick={this.deleteEvent}>
                         <strong className="button x-small border-gray rounded" type="button">Delete</strong>
-                    </div>
-
+                    </button>
                     <Link to={`/add-event/${this.props.volunteerEvent._id}`}>
-                    <div className="box-right" style={{ marginLeft: 5 }}>
+                        <div className="box-right" style={{ marginLeft: 5 }}>
                             <strong className="button x-small border-gray rounded" type="button">Edit</strong>
                         </div>
                     </Link>
-
                 </div>
             )
         } else {
             return (
                 <div style={{ display: 'flex', flexDirection: 'row' }}>
                     {
-                        participantsCount < participantsLimit ?
+                        participantsCount < participantsLimit || isUserAlreadyParticipating ?
                             <div className="box-right">
                                 <button onClick={isUserAlreadyParticipating ? this.unsubscribeFromEvent : this.joinEvent} className="button x-small border-gray rounded" type="button">{isUserAlreadyParticipating ? 'Unsubscribe' : 'Join Now'}</button>
                             </div>
@@ -92,14 +102,11 @@ class Event extends Component {
             )
         }
     }
-
     render() {
         const { name, description, date, time, location, img, participants, participantsLimit } = this.props.volunteerEvent;
         const formattedDate = moment(date).format('LL');
-
         let isUserAlreadyParticipating = this.isUserAlreadyParticipating();
         const participantsCount = participants.length;
-
         return (
             <li className="col-3">
                 <div className="box-item">
@@ -113,16 +120,15 @@ class Event extends Component {
                     <div className="box-info">
                         <div className="content">
                             <div className="row">
-                                <strong>{name}</strong>
+                                <h4><strong>{name}</strong></h4>
                             </div>
                             <div className="row">
-                                <strong>{formattedDate}</strong>, at {time}
-                                <h3>By participants</h3>
+                                <strong>{formattedDate}</strong>, at <b>{time}</b>
                             </div>
                             <div className="row row-auto">
-                                <h3>{description}</h3>
+                                <p>{description}</p>
                             </div>
-                            <div className="row">in :
+                            <div className="row">where :
                               <strong>{location}</strong>
                             </div>
                         </div>
@@ -175,23 +181,16 @@ class Event extends Component {
                                     </div>
                                 </div>
                             </div>
-
                             {this.renderButtons()}
-
-
                         </div>
                     </div>
                 </div>
             </li>
-
         )
     }
 }
-
 Event.defaultProps = {
     refresh: () => null,
     isAdmin: false
 }
-
-
 export default withAuth(Event);

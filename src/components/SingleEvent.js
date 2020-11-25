@@ -41,7 +41,7 @@ class SingleEvent extends Component {
         console.log(`PARTICIPANTS: ${JSON.stringify(participantsString)}`)
 
         return (
-            <div>
+            <div id="singleback">
                 <br></br>
                 <section id="content">
                     <div style={{ alignSelf: 'center', height: 400, width: 400, display: "flex", borderRadius: 50 }}>
@@ -52,8 +52,8 @@ class SingleEvent extends Component {
                     <div className="block" id="block-content">
                         <div className="inner width-3 courseID">
                             <div className="entry">
-                                <div className="entry-text item-scroll animate">
-                                    <h2><strong>{name}</strong></h2>
+                                <div className="entry-text item-scroll animate" style={{ textAlign: "center" }}>
+                                    <h2 style={{ textAlign: 'center' }}><strong>{name}</strong></h2>
                                     <p>{description}</p>
                                     <ul>
                                         <li>when: <b>{formattedDate}</b></li><br></br>

@@ -15,9 +15,8 @@ class JoinedEvents extends Component {
     
             this.fetchEvents = this.fetchEvents.bind(this);
             this.renderEvent = this.renderEvent.bind(this);
+            this.refresh = this.refresh.bind(this);
         }
-    
-    
     
         componentDidMount() {
             this.fetchEvents();
@@ -27,7 +26,7 @@ class JoinedEvents extends Component {
             axios
                 .get(`${process.env.REACT_APP_API_URL}/user/userJoinedEvents`, { withCredentials: true })
                 .then(res => {
-                    console.log(res.data);
+                    console.log(`USER JOINED EVENTS: ${JSON.stringify(res.data)}`);
                     this.setState({ events: res.data });
                 });
         }
@@ -39,7 +38,7 @@ class JoinedEvents extends Component {
     
         renderEvent(eventData) {
             return (
-                <Event isAdmin={true} refresh={this.refresh} volunteerEvent={eventData} />
+                <Event refresh={this.refresh} volunteerEvent={eventData} />
             )
         }
     
@@ -96,15 +95,10 @@ class JoinedEvents extends Component {
                                                         <div className="row row-auto">
                                                             <div className="title">
                                                                 Discover more interesting events in
-                              <div>
+                                                            <div>
                                                                     <div className="box-dropdown js-country-selector">
                                                                         <div className="option-active">Spain</div>
                                                                         <ul className="options style2">
-                                                                            <li>
-                                                                                <a className="item-option" href="/events/U.S.A./">
-                                                                                    U.S.A.
-                                      </a>
-                                                                            </li>
                                                                         </ul>
                                                                     </div>
                                                                 </div>

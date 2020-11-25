@@ -14,6 +14,8 @@ class UserCreatedEvents extends Component {
 
         this.fetchEvents = this.fetchEvents.bind(this);
         this.renderEvent = this.renderEvent.bind(this);
+        this.refresh = this.refresh.bind(this);
+
     }
 
 

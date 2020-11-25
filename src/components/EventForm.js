@@ -13,13 +13,13 @@ class EventForm extends React.Component {
         this.state = {
             alreadyExists: false,
             eventToCreate: {
-                name: 'Feeding the homeless',
-                img: 'Paste the URL link',
-                description: 'A revolutionary event',
-                participantsLimit: 3,
-                location: 'BCN',
+                name: '',
+                img: '',
+                description: '',
+                participantsLimit: '',
+                location: '',
                 date: new Date(),
-                time: '14:00',
+                time: '',
             }
         }
 
@@ -109,7 +109,7 @@ class EventForm extends React.Component {
                                             </div>
                                             <div className="row right">
                                                 <div className="form-group ">
-                                                    <input id="standard_submission_submission_url" className="text-input js-validate_url" data-msg="form.add_a_url_with_http" data-validator="url" inputMode="url"
+                                                    <input id="standard_submission_submission_url" className="text-input js-validate_url" placeholder="Paste the URL link" data-msg="form.add_a_url_with_http" data-validator="url" inputMode="url"
                                                         type="text"
                                                         name="img"
                                                         value={this.state.eventToCreate.img}
@@ -147,7 +147,7 @@ class EventForm extends React.Component {
                                             </div>
                                             <div className="row right">
                                                 <div className="form-group ">
-                                                    <input type="text" id="standard_submission_submission_designBy" required="required" className="text-input js-validate_characters" data-msg="form.characters_remaining" placeholder="Author name" data-max={30}
+                                                    <input type="text" id="standard_submission_submission_designBy" required="required" className="text-input js-validate_characters" data-msg="form.characters_remaining" data-max={30}
                                                         type="text"
                                                         name="location"
                                                         value={this.state.eventToCreate.location}
@@ -182,7 +182,7 @@ class EventForm extends React.Component {
 
                                             <div className="row right">
                                                 <div className="form-group ">
-                                                    <input type="text" id="standard_submission_submission_designerUrl" className="text-input js-validate_url" data-msg="form.add_a_url_with_http" placeholder="00:00" inputMode="url"
+                                                    <input type="text" id="standard_submission_submission_designerUrl"  className="text-input js-validate_url" data-msg="form.add_a_url_with_http" placeholder="00:00" inputMode="url"
                                                         type="time"
                                                         name="time"
                                                         value={this.state.eventToCreate.time}
@@ -206,7 +206,7 @@ class EventForm extends React.Component {
                                                 <div className="form-group ">
                                                     <div className="form-collaborator">
                                                         <div className="form-group">
-                                                            <input className="js-search-user text-input" placeholder="number of participants"
+                                                            <input className="js-search-user text-input" placeholder="0"
                                                                 type="number"
                                                                 name="participantsLimit"
                                                                 value={this.state.eventToCreate.participantsLimit}

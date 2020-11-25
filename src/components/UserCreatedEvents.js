@@ -24,7 +24,7 @@ class UserCreatedEvents extends Component {
 
     fetchEvents() {
         axios
-            .get(`http://localhost:4000/user/userCreatedEvents`, { withCredentials: true })
+            .get(`${process.env.REACT_APP_API_URL}/user/userCreatedEvents`, { withCredentials: true })
             .then(res => {
                 console.log(res.data);
                 this.setState({ events: res.data });

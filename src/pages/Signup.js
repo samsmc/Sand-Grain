@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from "react" ;
 import { withAuth } from "../lib/AuthProvider";
 
 class Signup extends Component {

@@ -34,7 +34,7 @@ class EventForm extends React.Component {
         const { match: { params } } = this.props;
 
         axios
-            .get((`http://localhost:4000/events/${params.id}`), { withCredentials: true })
+            .get((`${process.env.REACT_APP_API_URL}/events/${params.id}`), { withCredentials: true })
             .then(res => {
                 console.log(res.data);
                 this.setState({ eventToCreate: res.data, alreadyExists: true });
@@ -51,7 +51,7 @@ class EventForm extends React.Component {
     updateEvent = (event) => {
         event.preventDefault();
 
-        axios.put('http://localhost:4000/events/update-event', this.state.eventToCreate, { withCredentials: true })
+        axios.put(`${process.env.REACT_APP_API_URL}/events/update-event`, this.state.eventToCreate, { withCredentials: true })
             .then(response => {
                 this.props.history.push("/events");
             })
@@ -63,7 +63,7 @@ class EventForm extends React.Component {
         console.log(`EVENT eventToCreate: ${JSON.stringify(this.state.eventToCreate)}`)
         console.log(` this.props.session: ${JSON.stringify(this.props)}`)
 
-        axios.post('http://localhost:4000/events/add-event', this.state.eventToCreate, { withCredentials: true })
+        axios.post(`${process.env.REACT_APP_API_URL}/events/add-event`, this.state.eventToCreate, { withCredentials: true })
             .then(response => {
                 this.props.history.push("/events");
             })

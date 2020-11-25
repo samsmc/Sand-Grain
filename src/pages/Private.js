@@ -10,11 +10,11 @@ class Private extends Component {
       userInfo: {}
     }
 
-  }
-  getId() {
-    axios.get(`http://localhost:4000/user/userCreated/${this.props.user._id}`, { withCredentials: true })
-      .then(res =>
-        this.setState({ userInfo: res.data })
+}
+ getId()  {
+    axios.get(`${process.env.REACT_APP_API_URL}/user/userCreated/${this.props.user._id}` ,{withCredentials:true})
+    .then(res=> 
+      this.setState({userInfo: res.data })
       )
       .catch(error => {
         console.log(error)

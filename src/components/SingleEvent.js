@@ -21,7 +21,7 @@ class SingleEvent extends Component {
         console.log(`PROPS: ${JSON.stringify(this.props)}`)
 
         axios
-            .get((`http://localhost:4000/events/${params.id}`), { withCredentials: true })
+            .get((`${process.env.REACT_APP_API_URL}/events/${params.id}`), { withCredentials: true })
             .then(res => {
                 console.log(res.data);
                 this.setState({ event: res.data });

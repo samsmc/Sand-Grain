@@ -24,8 +24,10 @@ userInfo:{}
 
   
  }
-componentDidMount(){
-  this.getId()
+ componentDidMount() {
+  return (
+    this.props.user ? this.getId() : null
+  )
 }
   render() {
     const { user, logout, isLoggedin } = this.props;
@@ -60,9 +62,8 @@ componentDidMount(){
 
               {isLoggedin ? (
                 <>
-                  <div className="item login">
-                    <strong><a className="text-black open_login" href="/private">{this.state.userInfo.username}</a></strong>
-                    
+                <div className="item login">
+                    <strong><a className="text-black open_login" style={{ marginRight: 10 }} href="/private">{this.state.userInfo.username}</a></strong>
                     <button className="text-black open_login" onClick={logout}>
                       logout </button>
                   </div>

@@ -11,15 +11,13 @@ const Home = () => {
           <div className="box-site-head">
             <div className="box-bg has-tablet">
               <a href="/" data-type="submission" className="js-visit-item">
-                <img src="./images/homepage.png" alt="" width={1900} height={700} className="lazy lazy-loaded" />
+                <img src="https://res.cloudinary.com/mscsam/image/upload/v1606317586/homepage_zj0ktr.jpg" alt="cover" width={1900} height={700} className="lazy lazy-loaded" />
               </a>
             </div>
 
 
             <div className="box-photo has-mobile">
-              <a href="/" data-type="submission" className="js-visit-item">
-                <img src="./images/homepage.png" data-src="./images/homepage.png" data-src-2x="./images/homepage.png" alt="" className="lazy lazy-loaded" />
-              </a>
+              <img src="https://res.cloudinary.com/mscsam/image/upload/v1606317586/homepage_zj0ktr.jpg" data-src="https://res.cloudinary.com/mscsam/image/upload/v1606317586/homepage_zj0ktr.jpg" data-src-2x="https://res.cloudinary.com/mscsam/image/upload/v1606317586/homepage_zj0ktr.jpg" alt="cover" className="lazy lazy-loaded" />
             </div>
 
             <div className="box-content">
@@ -48,25 +46,25 @@ const Home = () => {
           </div>
           <div className="block border-bottom has-tablet">
             <div className="inner width-3">
-              <div className="box-page-info" style={{textAlign: 'center'}}>
-              <h2 className="heading-large">Join our comunity, be a volunteer, make a difference in someone's life!</h2>
+              <div className="box-page-info" style={{ textAlign: 'center' }}>
+                <h2 className="heading-large">Join our comunity, be a volunteer, make a difference in someone's life!</h2>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-    <br></br>
-      <div className="inner vertical-center" style={{display: 'flex',	flexDirection: 'column'}}>
-        <h2 className="heading-large" style={{color:'#49c5b6'}}>How it works</h2>
+      <br></br>
+      <div className="inner vertical-center" style={{ display: 'flex', flexDirection: 'column' }}>
+        <h2 className="heading-large" style={{ color: '#49c5b6' }}>How it works</h2>
         <div className="circle-note-progress style-design">
-          <div className="wrapper" style={{textAlign: 'center'}}>
-          <img src="./images/join.png" style={{ maxWidth: "90px"}}/>
+          <div className="wrapper" style={{ textAlign: 'center' }}>
+            <img src="./images/join.png" style={{ maxWidth: "90px" }} />
             <h3>Join and make a difference</h3>
             <h4 className="h4">Join our community and create great events to make the the difference.</h4>
           </div>
-          <div className="wrapper" style={{textAlign: 'center'}}>
-          <img src="./images/explorer.png" style={{ maxWidth: "90px" }}/>
+          <div className="wrapper" style={{ textAlign: 'center' }}>
+            <img src="./images/explorer.png" style={{ maxWidth: "90px" }} />
             <h3>Explore</h3>
             <h4 h4 className="h4">Search for volunteer oportunities, meet other volunteers, make new friends.</h4>
           </div>

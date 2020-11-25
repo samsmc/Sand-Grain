@@ -9352,43 +9352,9 @@
         }
 
 
-/* CARD */
-/* .card {
-    border-radius: 25px;
-    position: relative;
-    float: right;
-    padding: 5px 50px;
-    background-color: #81ecec;
-    margin: 1px 90px;
-    height: 200px;
-    box-shadow: 0 2px 5px #ccc;
-    text-align: left;
-  }
-
-  .name {
-    font-size: 2em;
-    color: #2d3436;
-    display: flex;
-    flex: 1;
-    margin: 10% 20px 0;
-  }
-  
-  .card img {
-    margin: 30px 30px 0 0;
-  }
-  
-  .circle-img {
-    border-radius: 50%;
-    border: 7px solid #fff;
-    width: 100px;
-    height: 100px;
-  }
-
-  .bottom {
-    margin-top: 120px;
-  }
-  
-  .info {
-    margin: 20px 0;
-    color: #1a7e76;
-  } */
+        #privateBack {
+            background-image: url("https://res.cloudinary.com/mscsam/image/upload/v1606313518/background_ptfusv.png");
+            background-repeat: no-repeat;
+            background-size: 100% 120%;     
+            }
+            

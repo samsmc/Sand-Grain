@@ -22,6 +22,7 @@ class Signup extends Component {
     return (
 
       <div className="box-content-login">
+      <br></br>
         <div className="box-login">
           <div className="tab-form js-tab-form active" id="tab-login-form" style={{ display: 'none' }}>
             <div className="form">

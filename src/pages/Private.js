@@ -4,75 +4,78 @@ import { Link } from "react-router-dom";
 import axios from 'axios'
 
 class Private extends Component {
-constructor(){
-super()
-     this.state = {
-    userInfo : {}
-}
+  constructor() {
+    super()
+    this.state = {
+      userInfo: {}
+    }
 
-}
- getId()  {
-    axios.get(`http://localhost:4000/user/userCreated/${this.props.user._id}` ,{withCredentials:true})
-    .then(res=> 
-      this.setState({userInfo: res.data })
+  }
+  getId() {
+    axios.get(`http://localhost:4000/user/userCreated/${this.props.user._id}`, { withCredentials: true })
+      .then(res =>
+        this.setState({ userInfo: res.data })
       )
       .catch(error => {
         console.log(error)
       })
- 
 
 
-  
- }
-componentDidMount(){
-  this.getId()
-}
+
+
+  }
+  componentDidMount() {
+    this.getId()
+  }
   render() {
     const { user } = this.props
     console.log(this.state.userInfo)
-  
+
     return (
-      <div style={{ marginLeft: "30px" }}>
-        <div className="main-dashboard-elements">
-          <br></br>
-        
-          <h3>Hello {this.state.userInfo.username}</h3>
-          
+      <div id="privateBack">
+        <div style={{ marginLeft: "40px" }}>
+          <div className="main-dashboard-elements">
+            <br></br>
 
-          <div className="top" style={{textAlign:'right', marginRight:'50px'}}>
-          <img width={417} height={298} alt="avatar_img" src={this.state.userInfo.userPhoto} className="circle-img" style={{ width: 417, height: 298, backgroundImage: "url('https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'", backgroundSize: "cover" }} />
-          <p className="info">{this.state.userInfo.email}</p>
-        </div>
-        
-
-        
-          <p>Here you can personalize your profile and check all the information about the events you have joined and created.</p><br></br>
-        </div>
+            <h3>Hello <b>{this.state.userInfo.username}</b>,</h3>
 
 
-        <div>
-          <Link to="/user/userCreatedEvents">
-            <h3>Created events</h3> </Link>
-          <p>Create, edit and remove your events.</p><br></br>
-        </div>
+            <div className="top" style={{ textAlign: 'left', marginRight: '50px' }}>
+              <img width={150} height={150} alt="avatar_img" src={this.state.userInfo.userPhoto} className="circle-img" style={{ width: 150, height: 150, borderRadius: 200, backgroundImage: "url('https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'", backgroundSize: "cover" }} />
+              <h4 className="info" style={{ marginLeft: 20 }}>{this.state.userInfo.email}</h4>
+            </div>
 
-        <div>
-          <Link to="/user/userJoinedEvents">
-            <h3>Joined events</h3></Link>
-          <p>Create, edit and remove your events.</p><br></br>
-        </div>
 
-        <div>
-          <Link to="/user/userDetails">
-            <h3>Edit profile</h3></Link>
-          <p>Update your details.</p><br></br>
-        </div>
 
-        <div>
-          <Link to="/add-event">
-            <h3>Create a new event </h3>
-          </Link>
-          <p>Ready to organize a new adventure?</p>
+            <h3>Here you can personalize your profile and check all the information about the events you have joined and created.</h3><br></br>
+          </div>
+
+
+          <div>
+            <Link to="/user/userCreatedEvents">
+              <h3>Created events</h3> </Link>
+            <p>Create, edit and remove your events.</p><br></br>
+          </div>
+
+          <div>
+            <Link to="/user/userJoinedEvents">
+              <h3>Joined events</h3></Link>
+            <p>Create, edit and remove your events.</p><br></br>
+          </div>
+
+          <div>
+            <Link to="/user/userDetails">
+              <h3>Edit profile</h3></Link>
+            <p>Update your details.</p><br></br>
+          </div>
+
+          <div>
+            <Link to="/add-event">
+              <h3>Create a new event </h3>
+            </Link>
+            <p>Ready to organize a new adventure?</p>
+            <br></br>
+          </div>
         </div>
       </div>
     );

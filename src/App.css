@@ -9351,6 +9351,12 @@
             vertical-align: middle
         }
 
+        #privateBack {
+background-image: url("https://res.cloudinary.com/mscsam/image/upload/v1606313518/background_ptfusv.png");
+background-repeat: no-repeat;
+background-size: 100% 120%;     
+}
+
 
 /* CARD */
 /* .card {

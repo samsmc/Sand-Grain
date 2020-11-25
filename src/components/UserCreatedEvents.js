@@ -92,15 +92,10 @@ class UserCreatedEvents extends Component {
                                                             <div className="row row-auto">
                                                                 <div className="title">
                                                                     Discover more interesting events in
-                                  <div>
+                                                                    <div>
                                                                         <div className="box-dropdown js-country-selector">
                                                                             <div className="option-active">Spain</div>
                                                                             <ul className="options style2">
-                                                                                <li>
-                                                                                    <a className="item-option" href="/events/U.S.A./">
-                                                                                        U.S.A.
-                                          </a>
-                                                                                </li>
                                                                             </ul>
                                                                         </div>
                                                                     </div>

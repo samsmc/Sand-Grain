@@ -23,13 +23,13 @@ class Navbar extends Component {
       })
   }
 
-
-
   componentDidMount() {
     return (
       this.props.user ? this.getId() : null
     )
   }
+
+  
   render() {
     const { user, logout, isLoggedin } = this.props;
 

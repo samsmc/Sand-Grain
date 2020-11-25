@@ -22,7 +22,7 @@ class EventsList extends Component {
 
     fetchEvents() {
         axios
-            .get('http://localhost:4000/events')
+            .get(`${process.env.REACT_APP_API_URL}/events`)
             .then(response => {
                 console.log(`EVENT DATA: ${JSON.stringify(response)}`);
                 this.setState({ events: response.data });

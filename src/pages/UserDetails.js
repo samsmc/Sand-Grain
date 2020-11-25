@@ -18,7 +18,7 @@ const UserDetails = (props) => {
     const submitChanges = async (event) => {
         event.preventDefault();
         /* const formData = new FormData() */
-        const response = await axios.put(`http://localhost:4000/user/userDetails/${props.user._id}`, { username, email, address, phone, imgUrl })
+        const response = await axios.put(`${process.env.REACT_APP_API_URL}/user/userDetails/${props.user._id}`, { username, email, address, phone, imgUrl })
         // return response 
       props.history.push('/private');
         /*  const json = await response.json() */

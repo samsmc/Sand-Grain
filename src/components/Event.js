@@ -35,7 +35,7 @@ class Event extends Component {
     joinEvent() {
         console.log("JOINING EVENT")
         console.log(`props ... ${JSON.stringify(this.props)}`)
-        axios.post(`http://localhost:4000/events/add-participant-to-event`, { user: this.props.user._id, event: this.props.volunteerEvent._id }, { withCredentials: true })
+        axios.post(`${process.env.REACT_APP_API_URL}/events/add-participant-to-event`, { user: this.props.user._id, event: this.props.volunteerEvent._id }, { withCredentials: true })
             .then(response => {
                 console.log(`RESPONSE: ${JSON.stringify(response)}`)
 
@@ -46,7 +46,7 @@ class Event extends Component {
     unsubscribeFromEvent() {
         console.log("UNSUBSCRIBING FROM EVENT")
         console.log(`props ... ${JSON.stringify(this.props)}`)
-        axios.put(`http://localhost:4000/events/delete-participant-to-event`, { user: this.props.user._id, event: this.props.volunteerEvent._id }, { withCredentials: true })
+        axios.put(`${process.env.REACT_APP_API_URL}/events/delete-participant-to-event`, { user: this.props.user._id, event: this.props.volunteerEvent._id }, { withCredentials: true })
             .then(response => {
                 console.log(`RESPONSE: ${JSON.stringify(response)}`)
 

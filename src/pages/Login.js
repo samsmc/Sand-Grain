@@ -22,7 +22,7 @@ class Login extends Component {
 
     <div className="box-content-login">
     <br></br>
-      <div className="box-login">
+      <div className="box-login" style={{ backgroundImage:"./images/background.png"}}>
         <div className="tab-form js-tab-form active" id="tab-login-form">
           <div className="form">
             <div className="box-section">

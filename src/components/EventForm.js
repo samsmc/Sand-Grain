@@ -20,7 +20,6 @@ class EventForm extends React.Component {
                 location: 'BCN',
                 date: new Date(),
                 time: '14:00',
-                category: 'cleaning'
             }
         }
 
@@ -73,91 +72,161 @@ class EventForm extends React.Component {
     render() {
 
         return (
-            <div className="NewEvent">
-                <div>
-                    <h1>Add a new event</h1>
-                </div>
-                <div>
-                    <form onSubmit={this.state.alreadyExists ? this.updateEvent : this.submitEvent}>
-                        <div>
-                            <strong>Upload the photo</strong>
-                            <input
-                                type="text"
-                                name="img"
-                                value={this.state.eventToCreate.img}
-                                onChange={this.handleChange}
-                                className="form-input"
-                            />
-                        </div>
-                        <div>
-                            <strong>Name</strong>
-                            <label htmlFor="name">Event Name</label>
-                            <input
-                                type="text"
-                                name="name"
-                                value={this.state.eventToCreate.name}
-                                onChange={this.handleChange}
-                            />
-                        </div>
-                        <div>
-                            <strong>Description</strong>
-                            <input
-                                type="text"
-                                name="description"
-                                value={this.state.eventToCreate.description}
-                                onChange={this.handleChange}
-                            />
-                        </div>
-                        <div>
-                            <strong>Category</strong>
-                            <input
-                                type="text"
-                                name="category"
-                                value={this.state.eventToCreate.category} /*Como cargar las opciones del dropdown?*/
-                                onChange={this.handleChange}
-                            />
-                        </div>
-                        <div>
-                            <strong>Location</strong>
-                            <input
-                                type="text"
-                                name="location"
-                                value={this.state.eventToCreate.location}
-                                onChange={this.handleChange}
-                            />
-                        </div>
-                        <div>
-                            <strong>Date</strong>
-                            <input
-                                type="date"
-                                name="date"
-                                value={this.state.eventToCreate.date}
-                                onChange={this.handleChange}
-                            />
-                        </div>
-                        <div>
-                            <strong>Time</strong>
-                            <input
-                                type="time"
-                                name="time"
-                                value={this.state.eventToCreate.time}
-                                onChange={this.handleChange}
-                            />
-                        </div>
-                        <div>
-                            <strong>Participants</strong>
-                            <input
-                                type="number"
-                                name="participantsLimit"
-                                value={this.state.eventToCreate.participantsLimit} /*Como cambiar el numero de acuerdo con el num de usuarios?*/
-                                onChange={this.handleChange}
-                            />
-                        </div>
+            <section id="content">
+                <div className="content-view">
+                    <div className="block js-purchase-type" data-type="submission">
+                        <div className="inner width-2">
+                            <div className="head-box-form">
+                                <h1 className="heading-large horizontal-center">
+                                    Create a new event</h1>
+                            </div>
 
-                        <button className="btn" type="submit">{this.state.alreadyExists ? 'UPDATE EVENT' : 'ADD NEW EVENT'}</button>
-                    </form>
+                            <form onSubmit={this.state.alreadyExists ? this.updateEvent : this.submitEvent}>
+                                <div className="box-form-fields js-forms">
+                                    <ul>
+                                        <li>
+                                            <div className="row left">
+                                                <label htmlFor="standard_submission_submission_sitename" className="asterisk-required">
+                                                    <strong>Event's name</strong>
+                                                </label>
+                                            </div>
+                                            <div className="row right">
+                                                <div className="form-group ">
+                                                    <input id="standard_submission_submission_sitename" className="text-input js-validate_characters" data-msg="form.characters_remaining" data-max={30}
+                                                        type="text"
+                                                        name="name"
+                                                        value={this.state.eventToCreate.name}
+                                                        onChange={this.handleChange}
+                                                    />
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div className="row left">
+                                                <label htmlFor="standard_submission_submission_url" className="asterisk-required">
+                                                    <strong>Photo URL</strong>
+                                                </label>
+                                            </div>
+                                            <div className="row right">
+                                                <div className="form-group ">
+                                                    <input id="standard_submission_submission_url" className="text-input js-validate_url" data-msg="form.add_a_url_with_http" data-validator="url" inputMode="url"
+                                                        type="text"
+                                                        name="img"
+                                                        value={this.state.eventToCreate.img}
+                                                        onChange={this.handleChange}
+                                                    />
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div className="row left">
+                                                <label htmlFor="standard_submission_submission_description" className="asterisk-required">
+                                                    <strong>Description</strong>
+                                                </label>
+                                            </div>
+                                            <div className="row right">
+                                                <div className="form-group ">
+                                                    <textarea id="standard_submission_submission_description" data-msg="form.characters_remaining_no_html" className="text-input js-validate_characters" data-max={185} defaultValue={""}
+                                                        type="text"
+                                                        name="description"
+                                                        value={this.state.eventToCreate.category}
+                                                        onChange={this.handleChange}
+                                                    />
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div className="box-form-fields js-forms">
+                                    <ul>
+                                        <li>
+                                            <div className="row left">
+                                                <label htmlFor="standard_submission_submission_designBy" className="asterisk-required">
+                                                    <strong>Location</strong>
+                                                </label>
+                                            </div>
+                                            <div className="row right">
+                                                <div className="form-group ">
+                                                    <input type="text" id="standard_submission_submission_designBy" required="required" className="text-input js-validate_characters" data-msg="form.characters_remaining" placeholder="Author name" data-max={30}
+                                                        type="text"
+                                                        name="location"
+                                                        value={this.state.eventToCreate.location}
+                                                        onChange={this.handleChange}
+                                                    />
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div className="row left">
+                                                <label htmlFor="standard_submission_submission_designerUrl" className="asterisk-required">
+                                                    <strong>Date</strong>
+                                                </label>
+                                            </div>
+
+                                            <div className="row right">
+                                                <div className="form-group ">
+                                                    <input type="text" id="standard_submission_submission_designerUrl" className="text-input js-validate_url" data-msg="form.add_a_url_with_http" placeholder="DD/MM/YYYY" inputMode="url"
+                                                        type="date"
+                                                        name="date"
+                                                        value={this.state.eventToCreate.date}
+                                                        onChange={this.handleChange}
+                                                    />
+                                                </div>
+                                            </div>
+
+                                            <div className="row left">
+                                                <label htmlFor="standard_submission_submission_designerUrl" className="asterisk-required">
+                                                    <strong>Time</strong>
+                                                </label>
+                                            </div>
+
+                                            <div className="row right">
+                                                <div className="form-group ">
+                                                    <input type="text" id="standard_submission_submission_designerUrl" className="text-input js-validate_url" data-msg="form.add_a_url_with_http" placeholder="00:00" inputMode="url"
+                                                        type="time"
+                                                        name="time"
+                                                        value={this.state.eventToCreate.time}
+                                                        onChange={this.handleChange}
+                                                    />
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div className="box-form-fields">
+                                    <ul>
+                                        <li>
+                                            <div className="row left">
+                                                <label>
+                                                    <strong>Number of participants</strong>
+                                                </label>
+                                            </div>
+                                            <div className="row right">
+                                                <div className="form-group ">
+                                                    <div className="form-collaborator">
+                                                        <div className="form-group">
+                                                            <input className="js-search-user text-input" placeholder="number of participants"
+                                                                type="number"
+                                                                name="participantsLimit"
+                                                                value={this.state.eventToCreate.participantsLimit}
+                                                                onChange={this.handleChange}
+                                                            />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <button className="button large width-full" type="submit">{this.state.alreadyExists ? 'UPDATE EVENT' : 'ADD NEW EVENT'}</button>
+
+                            </form>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </section>
         );
     }
 }

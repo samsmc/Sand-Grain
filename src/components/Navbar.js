@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-/* import { Link } from "react-router-dom"; */
+import { Link } from "react-router-dom";
 import { withAuth } from "../lib/AuthProvider";
 
 
 class Navbar extends Component {
   render() {
     const { user, logout, isLoggedin } = this.props;
+    
     return (
 
       <div className="wrapper ">
@@ -15,9 +16,6 @@ class Navbar extends Component {
             <div className="header">
             <div className="pull-left"></div>
 
-              <div className="pull-right">
-                <div className="bt-close js-close-menu text-uppercase">close</div>
-              </div>
             </div>
             <ul className="menu active" id="menu-main">
               <li><span className="item open_login">Register / Log in</span></li>
@@ -30,21 +28,12 @@ class Navbar extends Component {
 
         <header id="header">
           <div className="header-main">
-            <div className="box-left">
-            <div className="item bt-menu js-nav-main" data-menu-id="menu-main">
-                        <div className="ico-menu">
-                            <div className="bar" />
-                            <div className="bar" />
-                            <div className="bar" />
-                        </div>
-              </div>
+          <div class="box-left">
+                <div class="item bt-menu js-nav-main" data-menu-id="menu-main">
+                    <Link to= '/events'> <span class="has-tablet">EVENTS</span></Link>
+                </div>
             </div>
             <div className="box-right">
-              <div className="item bt-search" id="js-search-container">
-                <svg className="ico-svg" viewBox="0 0 14 14">
-                  <use xlinkHref="/" />
-                </svg>
-              </div>
 
               {isLoggedin ? (
                 <>

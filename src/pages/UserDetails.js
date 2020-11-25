@@ -50,63 +50,122 @@ const UserDetails = (props) => {
 
     return (
 
-        <div className="NewEvent">
-            <div>
-                <h1>Manage your details</h1>
-            </div>
-            <div>
-                <form onSubmit={submitChanges}>
-                    <div>
-                        <strong>Profile picture</strong>
-                        <input
-                            type="file"
-                            name="img"
-                            value={''}
-                            onChange={handleFileUpload}
-                            className="form-input"
-                        />
-                    </div>
-                    <div>
-                        <strong>User Name</strong>
-                        <input
-                            type="text"
-                            name="username"
-                            value={username || ''}
-                            onChange={e => setUsername(e.target.value)}
-                        />
-                    </div>
-                    <div>
-                        <strong>Email</strong>
-                        <input
-                            type="text"
-                            name="email"
-                            value={email || ''}
-                            onChange={e => setEmail(e.target.value)}
-                        />
-                    </div>
-                    <div>
-                        <strong>Address</strong>
-                        <input
-                            type="text"
-                            name="address"
-                            value={address || ''}
-                            onChange={e => setAddress(e.target.value)}
-                        />
-                    </div>
-                    <div>
-                        <strong>Phone</strong>
-                        <input
-                            type="number"
-                            name="phone"
-                            value={phone || ''}
-                            onChange={e => setPhone(e.target.value)}
-                        />
-                    </div>
+        <section id="content">
+            <div className="content-view">
+                <div className="block js-purchase-type" data-type="submission">
+                    <div className="inner width-2">
+                        <div className="head-box-form">
+                            <h1 className="heading-large horizontal-center">
+                                Your details</h1>
+                        </div>
 
-                    <button className="btn" type="submit">UPDATE PROFILE</button>
-                </form>
+                        <form onSubmit={submitChanges}>
+                            <div className="box-form-fields js-forms">
+                                <ul>
+                                    <li>
+                                        <div className="row left">
+                                            <label htmlFor="standard_submission_submission_sitename" className="asterisk-required">
+                                                <strong>Username</strong>
+                                            </label>
+                                        </div>
+                                        <div className="row right">
+                                            <div className="form-group ">
+                                                <input id="standard_submission_submission_sitename" className="text-input js-validate_characters" data-msg="form.characters_remaining" data-max={30}
+                                                    type="text"
+                                                    name="username"
+                                                    value={username || ''}
+                                                    onChange={e => setUsername(e.target.value)}
+                                                />
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <li>
+                                        <div className="row left">
+                                            <label htmlFor="standard_submission_submission_description" className="asterisk-required">
+                                                <strong>Email</strong>
+                                            </label>
+                                        </div>
+                                        <div className="row right">
+                                            <div className="form-group ">
+                                            <input id="standard_submission_submission_sitename" className="text-input js-validate_characters" data-msg="form.characters_remaining" data-max={30}
+                                                    type="text"
+                                                    name="email"
+                                                    value={email || ''}
+                                                    onChange={e => setEmail(e.target.value)}
+                                                />
+                                            </div>
+                                        </div>
+                                    </li>
+
+
+
+                                </ul>
+                            </div>
+                            <div className="box-form-fields js-forms">
+                                <ul>
+                                    <li>
+                                        <div className="row left">
+                                            <label htmlFor="standard_submission_submission_designBy" className="asterisk-required">
+                                                <strong>Address</strong>
+                                            </label>
+                                        </div>
+                                        <div className="row right">
+                                            <div className="form-group ">
+                                            <input id="standard_submission_submission_sitename" className="text-input js-validate_characters" data-msg="form.characters_remaining" data-max={30}
+                                                    type="text"
+                                                    name="address"
+                                                    value={address || ''}
+                                                    onChange={e => setAddress(e.target.value)}
+                                                />
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div className="row left">
+                                            <label htmlFor="standard_submission_submission_designerUrl" className="asterisk-required">
+                                                <strong>Phone</strong>
+                                            </label>
+                                        </div>
+
+                                        <div className="row right">
+                                            <div className="form-group ">
+                                            <input id="standard_submission_submission_sitename" className="text-input js-validate_characters" data-msg="form.characters_remaining" data-max={30}
+                                                    type="number"
+                                                    name="phone"
+                                                    value={phone || ''}
+                                                    onChange={e => setPhone(e.target.value)}
+                                                />
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div className="row left">
+                                            <label htmlFor="standard_submission_submission_url" className="asterisk-required">
+                                                <strong>Profile picture</strong>
+                                            </label>
+                                        </div>
+                                        <div className="row right">
+                                            <div className="form-group ">
+                                            <input id="standard_submission_submission_sitename" className="text-input js-validate_characters" data-msg="form.characters_remaining" data-max={30}
+                                                    type="file"
+                                                    name="img"
+                                                    value={''}
+                                                    onChange={handleFileUpload}
+                                                />
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <button className="button large width-full" type="submit">UPDATE PROFILE</button>
+
+                        </form>
+                    </div>
+                </div>
             </div>
-        </div>
+        </section>
     )
 }
 

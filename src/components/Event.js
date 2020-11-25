@@ -163,7 +163,7 @@ class Event extends Component {
                                                     </path>
                                                 </svg>
                                                 <svg className="ico-svg" viewBox="0 0 12.833 14">
-                                                    <use xlinkHref="https://www.awwwards.com/assets/images/sprite-icons.svg#user-2">
+                                                    <use xlinkHref="">
                                                     </use>
                                                 </svg>
                                                 <div className="number">{participantsCount}</div>

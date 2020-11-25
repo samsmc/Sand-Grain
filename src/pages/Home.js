@@ -48,25 +48,27 @@ const Home = () => {
           </div>
           <div className="block border-bottom has-tablet">
             <div className="inner width-3">
-              <div className="box-page-info">
-                <h3 className="h4">Join our comunity, make friends, give your free time.</h3>
+              <div className="box-page-info" style={{textAlign: 'center'}}>
+              <h2 className="heading-large">Join our comunity, be a volunteer, make a difference in someone's life!</h2>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-
-      <div className="inner vertical-center">
-        <h2 className="heading-large">How it works</h2>
+    <br></br>
+      <div className="inner vertical-center" style={{display: 'flex',	flexDirection: 'column'}}>
+        <h2 className="heading-large" style={{color:'#49c5b6'}}>How it works</h2>
         <div className="circle-note-progress style-design">
-          <div className="wrapper">
+          <div className="wrapper" style={{textAlign: 'center'}}>
+          <img src="./images/join.png" style={{ maxWidth: "90px"}}/>
             <h3>Join and make a difference</h3>
-            <p>Join our community and create great events to make the the difference.</p>
+            <h4 className="h4">Join our community and create great events to make the the difference.</h4>
           </div>
-          <div>
+          <div className="wrapper" style={{textAlign: 'center'}}>
+          <img src="./images/explorer.png" style={{ maxWidth: "90px" }}/>
             <h3>Explore</h3>
-            <p>Search for volunteer opportunities, meet other volunteers, make new friends.</p>
+            <h4 h4 className="h4">Search for volunteer oportunities, meet other volunteers, make new friends.</h4>
           </div>
         </div>
       </div>

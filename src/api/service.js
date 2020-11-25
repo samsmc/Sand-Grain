@@ -4,7 +4,7 @@ import axios from "axios";
 class Service {
     constructor() {
       this.service = axios.create({
-        baseURL: "http://localhost:4000",
+        baseURL: `${process.env.REACT_APP_API_URL}`,
         // withCredentials: true // => you might need this when having the users in the app
         // XMLHttpRequest from a different domain cannot set cookie values for their own domain unless withCredentials is set to true before making the request.
         // withCredentials indicates whether or not cross-site Access-Control requests should be made using credentials

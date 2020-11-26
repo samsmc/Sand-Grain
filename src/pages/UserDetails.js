@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { withAuth } from '../lib/AuthProvider';
 import axios from 'axios';
 import service from "../api/service";
-import {useHistory} from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 
 const UserDetails = (props) => {
@@ -20,7 +20,7 @@ const UserDetails = (props) => {
         /* const formData = new FormData() */
         const response = await axios.put(`${process.env.REACT_APP_API_URL}/user/userDetails/${props.user._id}`, { username, email, address, phone, imgUrl })
         // return response 
-      props.history.push('/private');
+        props.history.push('/private');
         /*  const json = await response.json() */
         /* alert(JSON.stringify(response)) */
 
@@ -28,7 +28,7 @@ const UserDetails = (props) => {
 
     const handleFileUpload = async (e) => {
 
-        console.log("The file to be uploaded is: ", e.target.files[0]);
+
 
         const uploadData = new FormData();
         // imageUrl => this name has to be the same as in the model since we pass
@@ -38,7 +38,7 @@ const UserDetails = (props) => {
         try {
             const res = await service.handleUpload(uploadData);
 
-            console.log("response is: ", res);
+
             // after the console.log we can see that response carries 'secure_url' which we can use to update the state
             setImgUrl(res.secure_url)
         } catch (error) {
@@ -46,7 +46,6 @@ const UserDetails = (props) => {
         }
     };
 
-    console.log(imgUrl)
 
 
     return (
@@ -89,7 +88,7 @@ const UserDetails = (props) => {
                                         </div>
                                         <div className="row right">
                                             <div className="form-group ">
-                                            <input id="standard_submission_submission_sitename" className="text-input js-validate_characters" data-msg="form.characters_remaining" data-max={30}
+                                                <input id="standard_submission_submission_sitename" className="text-input js-validate_characters" data-msg="form.characters_remaining" data-max={30}
                                                     type="text"
                                                     name="email"
                                                     value={email || ''}
@@ -113,7 +112,7 @@ const UserDetails = (props) => {
                                         </div>
                                         <div className="row right">
                                             <div className="form-group ">
-                                            <input id="standard_submission_submission_sitename" className="text-input js-validate_characters" data-msg="form.characters_remaining" data-max={30}
+                                                <input id="standard_submission_submission_sitename" className="text-input js-validate_characters" data-msg="form.characters_remaining" data-max={30}
                                                     type="text"
                                                     name="address"
                                                     value={address || ''}
@@ -131,7 +130,7 @@ const UserDetails = (props) => {
 
                                         <div className="row right">
                                             <div className="form-group ">
-                                            <input id="standard_submission_submission_sitename" className="text-input js-validate_characters" data-msg="form.characters_remaining" data-max={30}
+                                                <input id="standard_submission_submission_sitename" className="text-input js-validate_characters" data-msg="form.characters_remaining" data-max={30}
                                                     type="number"
                                                     name="phone"
                                                     value={phone || ''}
@@ -148,7 +147,7 @@ const UserDetails = (props) => {
                                         </div>
                                         <div className="row right">
                                             <div className="form-group ">
-                                            <input id="standard_submission_submission_sitename" className="text-input js-validate_characters" data-msg="form.characters_remaining" data-max={30}
+                                                <input id="standard_submission_submission_sitename" className="text-input js-validate_characters" data-msg="form.characters_remaining" data-max={30}
                                                     type="file"
                                                     name="img"
                                                     value={''}

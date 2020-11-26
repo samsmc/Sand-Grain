@@ -18,12 +18,11 @@ class SingleEvent extends Component {
     componentDidMount() {
         const { match: { params } } = this.props;
 
-        console.log(`PROPS: ${JSON.stringify(this.props)}`)
 
         axios
             .get((`${process.env.REACT_APP_API_URL}/events/${params.id}`), { withCredentials: true })
             .then(res => {
-                console.log(res.data);
+                
                 this.setState({ event: res.data });
             });
     }
@@ -33,12 +32,12 @@ class SingleEvent extends Component {
         const { name, description, img, date, time, participants, location } = this.state.event;
         const formattedDate = moment(date).format('LL');
 
-        console.log(`IMAGE: ${img}`)
+      
         let participantsString = participants && participants.length > 0
             ? participants.map((participant, index) => index !== participants.length - 1 ? `${participant.username}, ` : `${participant.username}`).join("")
             : ' No participants assigned yet';
 
-        console.log(`PARTICIPANTS: ${JSON.stringify(participantsString)}`)
+       
 
         return (
             <div id="singleback">

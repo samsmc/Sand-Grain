@@ -11,30 +11,30 @@ class Service {
       });
     }
     handleUpload = async (theFile) => {
-      console.log("file in service: ", theFile);
+      
       try {
         const res = await this.service.post("/upload", theFile);
         return res.data;
       } catch (error) {
-        console.log(error);
+        
       }
     };
     saveNewEvent = async (newEvent) => {
-      console.log("new thing is: ", newEvent);
+     
       try {
         const res = await this.service.post("/components/NewEventForm", newEvent);
         return res.data;
       } catch (error) {
-        console.log(error);
+        
       }
     };
     getEvents = async () => {
         try {
             const res = await this.service.get("/EventsLists")
-            console.log(res.data)
+            
             return res.data
         } catch (error) {
-          console.log(error);
+         
         }
     }
   }

@@ -36,7 +36,7 @@ class App extends Component {
             <PrivateRoute exact path='/add-event/:id' component={EventForm} />
             <PrivateRoute exact path='/user/userDetails' component={UserDetails} />
             <PrivateRoute exact path='/events' component={EventsList} />
-            <PrivateRoute exact path='/events/:id' component={SingleEvent} />
+            <PrivateRoute exact path='/event/:id' component={SingleEvent} />
             <PrivateRoute exact path='/user/UserCreatedEvents' component={UserCreatedEvents}/>
             <PrivateRoute exact path='/user/userJoinedEvents' component={JoinedEvents}/>
           </Switch>

@@ -24,7 +24,6 @@ class EventsList extends Component {
         axios
             .get(`${process.env.REACT_APP_API_URL}/events`)
             .then(response => {
-                console.log(`EVENT DATA: ${JSON.stringify(response)}`);
                 this.setState({ events: response.data });
             });
     }
@@ -89,22 +88,17 @@ class EventsList extends Component {
                                                             <div className="row row-auto">
                                                                 <div className="title">
                                                                     Discover more interesting events in
-                                  <div>
+                                                                    <div>
                                                                         <div className="box-dropdown js-country-selector">
                                                                             <div className="option-active">Spain</div>
                                                                             <ul className="options style2">
-                                                                                <li>
-                                                                                    <a className="item-option" href="/events/U.S.A./">
-                                                                                        U.S.A.
-                                          </a>
-                                                                                </li>
                                                                             </ul>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <div className="row">
-                                                                <span className="text-gray">94 events found</span>
+                                                                <span className="text-gray">{this.state.events.length} events found</span>
                                                             </div>
                                                         </div>
                                                         <div className="footer">

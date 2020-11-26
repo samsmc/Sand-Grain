@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 
 const Home = () => {
 
@@ -33,7 +34,8 @@ const Home = () => {
                     </div>
                   </div>
                   <div className="box-notesite js-notes">
-                    <a href="/events" id="volunteer-btn">I want to volunteer</a>
+                
+                    <Link to="/events" id="volunteer-btn">I want to volunteer</Link>
                   </div>
                 </div>
                 <div className="box-breadcrumb">

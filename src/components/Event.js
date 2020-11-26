@@ -24,44 +24,37 @@ class Event extends Component {
     }
 
     isUserAlreadyParticipating() {
-        console.log(`PARTICIPANTS ${JSON.stringify(this.props.volunteerEvent.participants)}`);
-        console.log(`USER ${JSON.stringify(this.props.user._id)}`);
+
         let user = this.props.user._id;
-        // let howManyTimesParticipating = this.props.volunteerEvent.participants.filter(participant => participant._id === user).length;
-        // return howManyTimesParticipating > 0;
+
         let participants = this.props.volunteerEvent.participants.map(participant => {
             return participant._id ? participant._id : participant
         })
 
-        console.log(`PARTICIPANTS ARRAY: ${participants}`)
         return participants.includes(user);
     }
 
     deleteEvent() {
-        console.log("DELETING EVENT")
+
         axios.delete(`${process.env.REACT_APP_API_URL}/events/delete/${this.props.volunteerEvent._id}`, { withCredentials: true })
             .then(response => {
-                console.log(`RESPONSE: ${JSON.stringify(response)}`)
+
                 this.props.refresh();
             })
     }
 
     joinEvent() {
-        console.log("JOINING EVENT")
-        console.log(`props ... ${JSON.stringify(this.props)}`)
+
         axios.post(`${process.env.REACT_APP_API_URL}/events/add-participant-to-event`, { user: this.props.user._id, event: this.props.volunteerEvent._id }, { withCredentials: true })
             .then(response => {
-                console.log(`RESPONSE: ${JSON.stringify(response)}`)
                 this.props.refresh();
             })
     }
 
     unsubscribeFromEvent() {
-        console.log("UNSUBSCRIBING FROM EVENT")
-        console.log(`props ... ${JSON.stringify(this.props)}`)
+
         axios.put(`${process.env.REACT_APP_API_URL}/events/delete-participant-to-event`, { user: this.props.user._id, event: this.props.volunteerEvent._id }, { withCredentials: true })
             .then(response => {
-                console.log(`RESPONSE: ${JSON.stringify(response)}`)
                 this.props.refresh();
             })
     }
@@ -69,7 +62,7 @@ class Event extends Component {
     renderButtons() {
         const { participants, participantsLimit } = this.props.volunteerEvent;
         let isUserAlreadyParticipating = this.isUserAlreadyParticipating();
-        console.log(`isUserAlreadyParticipating ${isUserAlreadyParticipating}`);
+
 
         const participantsCount = participants.length;
         if (this.state.isAdmin) {
@@ -111,7 +104,7 @@ class Event extends Component {
             <li className="col-3">
                 <div className="box-item">
                     <figure className="rollover">
-                        <a href={`/events/${this.props.volunteerEvent._id}`} className="js-lightbox-sidebar">
+                        <a href={`/event/${this.props.volunteerEvent._id}`} className="js-lightbox-sidebar">
                             <div className="box-photo">
                                 <img width={417} height={298} alt="event" src={img} className="lazy lazy-loaded img-container" style={{ width: 417, height: 298, backgroundImage: "url('https://images.unsplash.com/photo-1559027615-cd4628902d4a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1053&q=80'", backgroundSize: "cover" }} />
                             </div>

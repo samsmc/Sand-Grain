@@ -30,13 +30,13 @@ class EventForm extends React.Component {
     }
 
     componentDidMount() {
-        console.log(`FETCHIN CREATED EVENTS BY USER`)
+
         const { match: { params } } = this.props;
 
         axios
             .get((`${process.env.REACT_APP_API_URL}/events/${params.id}`), { withCredentials: true })
             .then(res => {
-                console.log(res.data);
+
                 this.setState({ eventToCreate: res.data, alreadyExists: true });
             });
 
@@ -59,10 +59,7 @@ class EventForm extends React.Component {
 
     submitEvent = (event) => {
         event.preventDefault();
-        // console.log(`EVENT: ${JSON.stringify(event)}`)
-        console.log(`EVENT eventToCreate: ${JSON.stringify(this.state.eventToCreate)}`)
-        console.log(` this.props.session: ${JSON.stringify(this.props)}`)
-
+        
         axios.post(`${process.env.REACT_APP_API_URL}/events/add-event`, this.state.eventToCreate, { withCredentials: true })
             .then(response => {
                 this.props.history.push("/events");
@@ -182,7 +179,7 @@ class EventForm extends React.Component {
 
                                             <div className="row right">
                                                 <div className="form-group ">
-                                                    <input type="text" id="standard_submission_submission_designerUrl"  className="text-input js-validate_url" data-msg="form.add_a_url_with_http" placeholder="00:00" inputMode="url"
+                                                    <input type="text" id="standard_submission_submission_designerUrl" className="text-input js-validate_url" data-msg="form.add_a_url_with_http" placeholder="00:00" inputMode="url"
                                                         type="time"
                                                         name="time"
                                                         value={this.state.eventToCreate.time}

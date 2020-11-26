@@ -83,7 +83,7 @@ class Login extends Component {
                 <p align="center">
                   <strong><a className="link-underlined green js-forgot-password" href="/forgot-password">Forgot your password</a></strong>
                 </p>
-                <input type="hidden" name="_target_path" defaultValue="https://www.awwwards.com/" />
+                <input type="hidden" name="_target_path" defaultValue="" />
               </form>
 
 
@@ -100,7 +100,7 @@ class Login extends Component {
                   <span>Google</span>
                 </a>
                 <a href="/login/twitter" className="bt-connect twitter">
-                  <svg className="ico-svg" viewBox="0 0 17 14" xmlns="http://www.w3.org/2000/svg"><use xlinkHref="/assets/images/sprite-icons.svg#twitter" xmlnsXlink="http://www.w3.org/1999/xlink" /></svg>
+                  <svg className="ico-svg" viewBox="0 0 17 14" xmlns=""><use xlinkHref="" xmlnsXlink="" /></svg>
                   <span>Twitter</span>
                 </a>
                 <a href="/login/facebook" className="bt-connect facebook">

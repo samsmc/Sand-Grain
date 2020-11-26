@@ -78,7 +78,7 @@ class Signup extends Component {
                       href="/forgot-password">Forgot
                                     your password</a></strong>
                   </p>
-                  <input type="hidden" name="_target_path" defaultValue="https://www.awwwards.com/" />
+                  <input type="hidden" name="_target_path" defaultValue="" />
                 </form>
               </div>
               <div className="box-section">
@@ -86,7 +86,7 @@ class Signup extends Component {
                   <h3><strong>Or sign in with</strong></h3>
                 </div>
                 <div className="bts">
-                  <a href="/login/google?_destination=https://www.awwwards.com/" className="bt-connect google">
+                  <a href="https://www.google.com/" className="bt-connect google">
                     <svg viewBox="0 0 400 400" className="ico-svg">
                       <path
                         d="M142.9 24.2C97.6 39.7 59 73.6 37.5 116.5 30 131.3 24.6 147 21.3 163.3c-8.2 40.4-2.5 83.5 16.1 120.3 12.1 24 29.5 45.4 50.5 62.1 19.9 15.8 43 27.6 67.6 34.1 31 8.3 64 8.1 95.2 1 28.2-6.5 54.9-20 76.2-39.6 22.5-20.7 38.6-47.9 47.1-77.2 9.3-31.9 10.5-66 4.7-98.8h-175v72.6h101.4c-3.9 23.2-17.7 44.4-37.2 57.5-12.3 8.3-26.4 13.6-41 16.2-14.6 2.5-29.8 2.8-44.4-.1-14.9-3-29-9.2-41.4-17.9-19.8-13.9-34.9-34.2-42.6-57.1-7.9-23.3-8-49.2 0-72.4 5.6-16.4 14.8-31.5 27-43.9 15-15.4 34.5-26.4 55.6-30.9 18-3.8 37-3.1 54.6 2.2 15 4.5 28.8 12.8 40.1 23.6L310 80.8c6-6.1 12.3-12 18.1-18.3-17.3-16-37.7-28.9-59.9-37.1-40-14.8-85-15.1-125.3-1.2z"
@@ -106,18 +106,18 @@ class Signup extends Component {
                     </svg>
                     <span>Google</span>
                   </a>
-                  <a href="/login/twitter?_destination=https://www.awwwards.com/" className="bt-connect twitter">
-                    <svg className="ico-svg" viewBox="0 0 17 14" xmlns="http://www.w3.org/2000/svg">
-                      <use xlinkHref="/assets/images/sprite-icons.svg#twitter"
-                        xmlnsXlink="http://www.w3.org/1999/xlink" />
+                  <a href="https://www.google.com/" className="bt-connect twitter">
+                    <svg className="ico-svg" viewBox="0 0 17 14" xmlns="">
+                      <use xlinkHref=""
+                        xmlnsXlink="" />
                     </svg>
                     <span>Twitter</span>
                   </a>
-                  <a href="/login/facebook?_destination=https://www.awwwards.com/"
+                  <a href="https://www.facebook.com/"
                     className="bt-connect facebook">
-                    <svg className="ico-svg" viewBox="0 0 6.5 14" xmlns="http://www.w3.org/2000/svg">
-                      <use xlinkHref="/assets/images/sprite-icons.svg#facebook"
-                        xmlnsXlink="http://www.w3.org/1999/xlink" />
+                    <svg className="ico-svg" viewBox="0 0 6.5 14" xmlns="">
+                      <use xlinkHref=""
+                        xmlnsXlink="" />
                     </svg>
                     <span>Facebook</span>
                   </a>
@@ -166,14 +166,14 @@ class Signup extends Component {
                     </a>
                     <a href="/login/twitter" className="bt-connect twitter">
                       <svg className="ico-svg" viewBox="0 0 17 14">
-                        <use xlinkHref="https://www.awwwards.com/assets/images/sprite-icons.svg#twitter">
+                        <use xlinkHref="https://www.twitter.com">
                         </use>
                       </svg>
                       <span>Twitter</span>
                     </a>
                     <a href="https://www.facebook.com/login" className="bt-connect facebook">
                       <svg className="ico-svg" viewBox="0 0 6.5 14">
-                        <use xlinkHref="https://www.awwwards.com/assets/images/sprite-icons.svg#facebook">
+                        <use xlinkHref="">
                         </use>
                       </svg>
                       <span>Facebook</span>
